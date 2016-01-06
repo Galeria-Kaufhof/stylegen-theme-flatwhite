@@ -1,0 +1,11 @@
+<div class="components">
+  {{#if preflight}}
+    <header class="preflight-text">
+      {{{preflight}}}
+    </header>
+  {{/if}}
+
+  {{#each components}}
+    {{{compiled}}}
+  {{/each}}
+</div>
