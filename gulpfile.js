@@ -23,19 +23,19 @@ gulp.task('styles', function() {
   return gulp.src('styles/**/[^_]*.styl')
     .pipe(plumber())
     .pipe(stylus({ use: jeet(), compress: false }))
-    .pipe(gulp.dest('dist/styleguide-assets/styles'));
+    .pipe(gulp.dest('dist/stylegen-assets/styles'));
 });
 
 gulp.task('asset-revisioning', ['styles'], function () {
-  return gulp.src('./dist/styleguide-assets/**/*.{css,js}', { base: 'dist/styleguide-assets' })
+  return gulp.src('./dist/stylegen-assets/**/*.{css,js}', { base: 'dist/stylegen-assets' })
     .pipe(rev())
-    .pipe(gulp.dest('dist/styleguide-assets'))  // write rev'd styleguide-assets to build dir
+    .pipe(gulp.dest('dist/stylegen-assets'))  // write rev'd stylegen-assets to build dir
     .pipe(rev.manifest())
-    .pipe(gulp.dest('dist/styleguide-assets')); // write manifest to build dir
+    .pipe(gulp.dest('dist/stylegen-assets')); // write manifest to build dir
 });
 
 gulp.task('templates', ['asset-revisioning'], function() {
-  var manifest = gulp.src(path.resolve(__dirname, 'dist/styleguide-assets/rev-manifest.json'));
+  var manifest = gulp.src(path.resolve(__dirname, 'dist/stylegen-assets/rev-manifest.json'));
 
   return gulp.src('templates/**/[^_]*.hbs')
     .pipe(plumber())
