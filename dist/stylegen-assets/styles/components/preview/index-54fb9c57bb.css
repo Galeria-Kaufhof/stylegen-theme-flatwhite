@@ -1,0 +1,13 @@
+.sgfw-preview,
+.sgfw-preview-state {
+  overflow: hidden;
+}
+.sgfw-preview {
+  padding-bottom: 1rem;
+}
+.sgfw-preview-state {
+  padding-bottom: 0.5rem;
+}
+.sgfw-preview-state:last-of-type {
+  padding-bottom: 0;
+}

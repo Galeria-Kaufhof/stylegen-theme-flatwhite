@@ -19,6 +19,11 @@ gulp.task('clean', function() {
   .pipe(clean());
 });
 
+gulp.task('scripts', function() {
+  return gulp.src('scripts/**/*')
+    .pipe(gulp.dest('dist/stylegen-assets/scripts'));
+});
+
 gulp.task('styles', function() {
   return gulp.src('styles/**/[^_]*.styl')
     .pipe(plumber())
@@ -26,7 +31,7 @@ gulp.task('styles', function() {
     .pipe(gulp.dest('dist/stylegen-assets/styles'));
 });
 
-gulp.task('asset-revisioning', ['styles'], function () {
+gulp.task('asset-revisioning', ['styles', 'scripts'], function () {
   return gulp.src('./dist/stylegen-assets/**/*.{css,js}', { base: 'dist/stylegen-assets' })
     .pipe(rev())
     .pipe(gulp.dest('dist/stylegen-assets'))  // write rev'd stylegen-assets to build dir
@@ -50,5 +55,5 @@ gulp.task('build', function(cb) {
 gulp.task('default', ['build']);
 
 gulp.task('watch', ['build'], function() {
-  gulp.watch(['styles/**/*.styl', 'templates/**/*.hbs'], ['build']);
+  gulp.watch(['styles/**/*.styl', 'scripts/**/*', 'templates/**/*.hbs'], ['build']);
 });

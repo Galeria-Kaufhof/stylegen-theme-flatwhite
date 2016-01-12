@@ -1,21 +1,30 @@
 
   <article id="component-{{id}}">
     <header>
-      <h2>{{headline}}</h2>
+      <h2 class="sgfw-h2">{{headline}}</h2>
     </header>
 
 
-    <ul>
-      {{#each docs}}
-          <li><a href="#{{../id}}-{{label}}" class=" {{#if @first}}active{{/if}}">{{label}}</a></li>
-      {{/each}}
-    </ul>
+    <div class="sgfw-tabs">
+      {{#if docs.1.label}}
+        <nav class="sgfw-tabs-nav">
+          <ul class="sgfw-list sgfw-tabs-nav-list">
+            {{#each docs}}
+              <li class="sgfw-list-item sgfw-tabs-nav-item {{#if @first}}active{{/if}}">
+                <a href="#{{../id}}-{{label}}" class="sgfw-tabs-nav-link {{#if @first}}active{{/if}}">{{label}}</a>
+              </li>
+            {{/each}}
+          </ul>
+        </nav>
+      {{/if}}
 
-    {{#each docs}}
-      <div class="sgfw-markdown-container {{#if @first}}active{{/if}}" id="{{../id}}-{{label}}">
-          {{{content}}}
-      </div>
-    {{/each}}
+      {{#each docs}}
+        <div class="sgfw-markdown-container sgfw-tabs-item {{#if @first}}active{{/if}}" id="{{../id}}-{{label}}">
+            {{{content}}}
+        </div>
+      {{/each}}
+    </div>
+
 
     <!-- <div id="{{id}}-config">
       <dl>
@@ -29,23 +38,26 @@
       </dl>
     </div> -->
 
+
     {{#unless states}}
       {{! just show the default template }}
-      <div>
+      <div class="sgfw-preview">
         {{{template}}}
       </div>
 
-      <!-- <div class="mdl-card__supporting-text">
-        <code class="language-markup">{{template}}</code>
-      </div> -->
+      <div class="sgfw-code">
+        <code class="sgfw-code-language">{{template}}</code>
+      </div>
     {{else}}
       {{! show the rendering of each modifier (default view should be configured as a modifier, if it should be listed too) }}
       {{#each states as |state| }}
         <h3>{{state.label}}</h3>
-        <p class="sgfw-copy">{{{state.doc}}}</p>
-        <div>
+        <!-- <p class="sgfw-copy">{{{state.doc}}}</p> -->
+        <div class="sgfw-preview">
           {{#each state.content as |c| }}
-            {{{c}}}
+            <div class="sgfw-preview-state">
+              {{{c}}}
+            </div>
           {{/each}}
         </div>
       {{/each}}

@@ -166,6 +166,9 @@ h6.sgfw-h6,
 .sgfw-header {
   padding: 5rem 3rem;
 }
+.sgfw-markdown-container {
+  overflow: hidden;
+}
 li.sgfw-nav-item {
   list-style: none;
   margin: 0;
@@ -208,4 +211,54 @@ li.sgfw-nav-item {
 }
 .sgfw-nav > .sgfw-nav-list > .sgfw-nav-item > .sgfw-nav-link {
   font-weight: bold;
+}
+.sgfw-page {
+  padding-bottom: 5rem;
+}
+.sgfw-preview,
+.sgfw-preview-state {
+  overflow: hidden;
+}
+.sgfw-preview {
+  padding-bottom: 1rem;
+}
+.sgfw-preview-state {
+  padding-bottom: 0.5rem;
+}
+.sgfw-preview-state:last-of-type {
+  padding-bottom: 0;
+}
+.sgfw-tabs-item {
+  display: none;
+}
+.sgfw-tabs-item.active {
+  display: block;
+}
+.sgfw-tabs-nav {
+  padding-top: 1rem;
+}
+.sgfw-tabs-nav-list {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+.sgfw-tabs-nav-item {
+  display: inline-block;
+}
+.sgfw-tabs-nav-item:after {
+  content: '|';
+  color: #afacac;
+}
+.sgfw-tabs-nav-item:last-of-type:after {
+  content: '';
+}
+.sgfw-tabs-nav-link {
+  text-decoration: none;
+}
+.sgfw-tabs-nav-link,
+.sgfw-tabs-nav-item.active .sgfw-tabs-nav-link:hover {
+  color: #afacac;
+}
+.sgfw-tabs-nav-item.active .sgfw-tabs-nav-link {
+  color: #000;
 }
