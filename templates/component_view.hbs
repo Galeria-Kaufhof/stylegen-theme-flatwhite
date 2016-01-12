@@ -5,39 +5,27 @@
     </header>
 
 
-    <div class="sgfw-tabs">
-      {{#if docs.1.label}}
-        <nav class="sgfw-tabs-nav">
-          <ul class="sgfw-list sgfw-tabs-nav-list">
-            {{#each docs}}
-              <li class="sgfw-list-item sgfw-tabs-nav-item {{#if @first}}active{{/if}}">
-                <a href="#{{../id}}-{{label}}" class="sgfw-tabs-nav-link {{#if @first}}active{{/if}}">{{label}}</a>
-              </li>
-            {{/each}}
-          </ul>
-        </nav>
-      {{/if}}
+    {{#if docs.0.label}}
+      <div class="sgfw-tabs">
+        {{#if docs.1.label}}
+          <nav class="sgfw-tabs-nav">
+            <ul class="sgfw-list sgfw-tabs-nav-list">
+              {{#each docs}}
+                <li class="sgfw-list-item sgfw-tabs-nav-item {{#if @first}}active{{/if}}">
+                  <a href="#{{../id}}-{{label}}" class="sgfw-tabs-nav-link {{#if @first}}active{{/if}}">{{label}}</a>
+                </li>
+              {{/each}}
+            </ul>
+          </nav>
+        {{/if}}
 
-      {{#each docs}}
-        <div class="sgfw-markdown-container sgfw-tabs-item {{#if @first}}active{{/if}}" id="{{../id}}-{{label}}">
-            {{{content}}}
-        </div>
-      {{/each}}
-    </div>
-
-
-    <!-- <div id="{{id}}-config">
-      <dl>
-        <dd>ID:</dd>
-        <dt>{{component.id}}</dt>
-
-        <dd>Partials:</dd>
-        <dt>
-          {{#each component.partials}}{{this.name}}{{#unless @last}},{{/unless}}{{/each}}
-        </dt>
-      </dl>
-    </div> -->
-
+        {{#each docs}}
+          <div class="sgfw-markdown-container sgfw-tabs-item {{#if @first}}active{{/if}}" id="{{../id}}-{{label}}">
+              {{{content}}}
+          </div>
+        {{/each}}
+      </div>
+    {{/if}}
 
     {{#unless states}}
       {{! just show the default template }}
@@ -51,14 +39,22 @@
     {{else}}
       {{! show the rendering of each modifier (default view should be configured as a modifier, if it should be listed too) }}
       {{#each states as |state| }}
-        <h3>{{state.label}}</h3>
-        <!-- <p class="sgfw-copy">{{{state.doc}}}</p> -->
-        <div class="sgfw-preview">
-          {{#each state.content as |c| }}
-            <div class="sgfw-preview-state">
-              {{{c}}}
-            </div>
-          {{/each}}
+        <div class="sgfw-state">
+
+          <h3 class="sgfw-h3 sgfw-state-headline">{{state.label}}</h3>
+
+          {{#if state.doc}}
+            <p class="sgfw-copy">{{{state.doc}}}</p>
+          {{/if}}
+
+          <div class="sgfw-preview">
+            {{#each state.content as |c| }}
+              <div class="sgfw-preview-state-variant">
+                {{{c}}}
+              </div>
+            {{/each}}
+          </div>
+
         </div>
       {{/each}}
 
