@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="sg-flatwhite">
 <head>
   <meta charset="UTF-8">
-  <title>Components</title>
+  <title>Styleguide</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="/styleguide-assets/styles/stylegen-flatwhite-1f2a61b141.css">
+  <link rel="stylesheet" href="/stylegen-assets/styles/stylegen-flatwhite-daa5aca155.css">
 
   <!-- TODO: make css deps more dynamic, maybe allow tag reference here -->
   {{#each cssDeps}}
@@ -23,31 +23,38 @@
   <!-- TODO: allow head js tags -->
 </head>
 <body>
-    <header>
-      Styleguide
-    </header>
-    <nav class="test-stylegen-main-nav">
+  <header class="sgfw-header">
+    <h1 class="sgfw-h1">Styleguide</h1>
+  </header>
+
+  <div class="sgfw-content-wrapper">
+    <nav class="sgfw-nav test-stylegen-main-nav">
       {{#*inline "sg.main-link-item"}}
-        <a href="{{link}}">{{label}}</a>
-        {{#if children}}
-          <div class="children">
-            {{> sg.main-link-list children}}
-          </div>
-        {{/if}}
+        <li class="sgfw-nav-item sgfw-list-item">
+          <a class="sgfw-nav-link" href="{{link}}">{{label}}</a>
+          {{#if children}}
+            <ul class="sgfw-nav-children">
+              {{> sg.main-link-list children}}
+            </ul>
+          {{/if}}
+        </li>
       {{/inline}}
 
-      {{#*inline "sg.main-link-list"}}
-        {{#each this}}
-          {{> sg.main-link-item}}
-        {{/each}}
-      {{/inline}}
+      <ul class="sgfw-nav-list sgfw-list">
+        {{#*inline "sg.main-link-list"}}
+          {{#each this}}
+            {{> sg.main-link-item}}
+          {{/each}}
+        {{/inline}}
 
-      {{> sg.main-link-list pages }}
+        {{> sg.main-link-list pages }}
+      </ul>
     </nav>
-    <main>
+
+    <main class="sgfw-content">
       {{{content}}}
     </main>
-
+  </div>
   {{#each jsDeps}}
     <script src="{{this}}"></script>
   {{/each}}
@@ -59,5 +66,8 @@
   {{else}}
     <!-- SYLEGEN: dependencies.templates.bottom NO DEPS -->
   {{/if}}
+
+  <script>window.jQuery || document.write('<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"><\/script>')</script>
+  <script src="/stylegen-assets/scripts/stylegen-flatwhite-900864ddf7.js"></script>
 </body>
 </html>

@@ -1,0 +1,29 @@
+ft-inactive = rgb(175, 172, 172)
+
+.sgfw-tabs-nav
+  padding-top 1rem
+
+.sgfw-tabs-nav-list
+  display inline
+  margin 0
+  padding 0
+
+
+.sgfw-tabs-nav-item
+  display inline-block
+
+  &:after
+    content: '|'
+    color ft-inactive
+
+  &:last-of-type:after
+    content: ''
+
+.sgfw-tabs-nav-link
+  text-decoration none
+
+  &, .sgfw-tabs-nav-item.active &:hover
+    color ft-inactive
+
+  .sgfw-tabs-nav-item.active &
+    color #000
