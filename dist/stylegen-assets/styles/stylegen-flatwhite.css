@@ -228,6 +228,7 @@ li.sgfw-nav-item {
   position: relative;
   top: 0;
   left: 0;
+  transform: rotate(0);
 }
 .sgfw-preview {
   padding-bottom: 1rem;
