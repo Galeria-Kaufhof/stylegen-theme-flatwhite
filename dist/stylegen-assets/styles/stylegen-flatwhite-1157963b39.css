@@ -225,6 +225,9 @@ li.sgfw-nav-item {
 .sgfw-preview {
   padding-top: 0.5rem;
   overflow: hidden;
+  position: relative;
+  top: 0;
+  left: 0;
 }
 .sgfw-preview {
   padding-bottom: 1rem;
