@@ -5,8 +5,8 @@
   <title>Styleguide</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="/stylegen-assets/vendor/prism.css">
-  <link rel="stylesheet" href="/stylegen-assets/styles/stylegen-flatwhite.css">
+  <link rel="stylesheet" href="{{ rellink './stylegen-assets/vendor/prism.css' }}">
+  <link rel="stylesheet" href="{{ rellink './stylegen-assets/styles/stylegen-flatwhite.css' }}">
 
   <!-- TODO: make css deps more dynamic, maybe allow tag reference here -->
   {{#each cssDeps}}
@@ -32,7 +32,7 @@
     <nav class="sgfw-nav test-stylegen-main-nav">
       {{#*inline "sg.main-link-item"}}
         <li class="sgfw-nav-item sgfw-list-item">
-          <a class="sgfw-nav-link" href="{{link}}">{{label}}</a>
+          <a class="sgfw-nav-link" href="{{ rellink link }}">{{label}}</a>
           {{#if children}}
             <ul class="sgfw-nav-children test-stylegen-children">
               {{> sg.main-link-list children}}
@@ -69,7 +69,7 @@
   {{/if}}
 
   <script>window.jQuery || document.write('<script src="/stylegen-assets/vendor/jquery.js"><\/script>')</script>
-  <script src="/stylegen-assets/vendor/prism.js"></script>
-  <script src="/stylegen-assets/scripts/stylegen-flatwhite.js"></script>
+  <script src="{{ rellink './stylegen-assets/vendor/prism.js' }}"></script>
+  <script src="{{ rellink './stylegen-assets/scripts/stylegen-flatwhite.js' }}"></script>
 </body>
 </html>
