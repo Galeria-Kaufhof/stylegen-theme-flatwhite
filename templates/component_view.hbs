@@ -33,19 +33,19 @@
         <nav class="sgfw-tabs-nav">
           <ul class="sgfw-list sgfw-tabs-nav-list">
             <li class="sgfw-list-item sgfw-tabs-nav-item active">
-              <a href="#{{../id}}-{{label}}-preview" class="sgfw-tabs-nav-link">Preview</a>
+              <a href="#{{slug}}-preview" class="sgfw-tabs-nav-link">Preview</a>
             </li>
             <li class="sgfw-list-item sgfw-tabs-nav-item">
-              <a href="#{{../id}}-{{label}}-code-example" class="sgfw-tabs-nav-link">Code</a>
+              <a href="#{{slug}}-code-example" class="sgfw-tabs-nav-link">Code</a>
             </li>
           </ul>
         </nav>
         {{! just show the default template }}
-        <div class="sgfw-preview sgfw-tabs-item active" id="{{../id}}-{{label}}-preview">
+        <div class="sgfw-preview sgfw-tabs-item active" id="{{slug}}-preview">
           {{{template}}}
         </div>
 
-        <div class="sgfw-code sgfw-tabs-item" id="{{../id}}-{{label}}-code-example">
+        <div class="sgfw-code sgfw-tabs-item" id="{{slug}}-code-example">
           <pre><code class="language-html">{{template}}</code></pre>
         </div>
       </div>
@@ -65,14 +65,14 @@
             <nav class="sgfw-tabs-nav">
               <ul class="sgfw-list sgfw-tabs-nav-list">
                 <li class="sgfw-list-item sgfw-tabs-nav-item active">
-                  <a href="#{{../id}}-{{label}}-{{state.label}}-preview" class="sgfw-tabs-nav-link">Preview</a>
+                  <a href="#{{state.slug}}-preview" class="sgfw-tabs-nav-link">Preview</a>
                 </li>
                 <li class="sgfw-list-item sgfw-tabs-nav-item">
-                  <a href="#{{../id}}-{{label}}-{{state.label}}-code-example" class="sgfw-tabs-nav-link">Code</a>
+                  <a href="#{{state.slug}}-code-example" class="sgfw-tabs-nav-link">Code</a>
                 </li>
               </ul>
             </nav>
-            <div class="sgfw-preview sgfw-tabs-item active" id="{{../id}}-{{label}}-{{state.label}}-preview">
+            <div class="sgfw-preview sgfw-tabs-item active" id="{{state.slug}}-preview">
               {{#each state.content as |c| }}
                 <div class="sgfw-preview-state-variant">
                   {{{c}}}
@@ -80,7 +80,7 @@
               {{/each}}
             </div>
 
-            <div class="sgfw-code sgfw-tabs-item" id="{{../id}}-{{label}}-{{state.label}}-code-example">
+            <div class="sgfw-code sgfw-tabs-item" id="{{state.slug}}-code-example">
               <pre class="sgfw-preview-state-variant-code">{{#each state.content as |c| }}<code class="language-html">{{c}}</code>{{/each}}</pre>
             </div>
           </div>
