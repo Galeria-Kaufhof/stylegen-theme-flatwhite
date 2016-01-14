@@ -215,18 +215,22 @@ li.sgfw-nav-item {
 .sgfw-page {
   padding-bottom: 5rem;
 }
-.sgfw-preview,
-.sgfw-preview-state {
+.sgfw-preview-state-variant {
+  overflow: hidden;
+  display: inline-block;
+}
+.sgfw-preview-state-variant:last-of-type {
+  padding-bottom: 0;
+}
+.sgfw-preview {
+  padding-top: 0.5rem;
   overflow: hidden;
 }
 .sgfw-preview {
   padding-bottom: 1rem;
 }
-.sgfw-preview-state {
+.sgfw-state-headline {
   padding-bottom: 0.5rem;
-}
-.sgfw-preview-state:last-of-type {
-  padding-bottom: 0;
 }
 .sgfw-tabs-item {
   display: none;

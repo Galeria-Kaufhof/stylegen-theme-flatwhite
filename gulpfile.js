@@ -19,6 +19,14 @@ gulp.task('clean', function() {
   .pipe(clean());
 });
 
+gulp.task('vendor-assets', function() {
+  return gulp.src([
+    'node_modules/prismjs/prism.js',
+    'node_modules/prismjs/themes/prism.css'
+  ])
+    .pipe(gulp.dest('dist/stylegen-assets/vendor'));
+});
+
 gulp.task('scripts', function() {
   return gulp.src('scripts/**/*')
     .pipe(gulp.dest('dist/stylegen-assets/scripts'));
@@ -31,7 +39,7 @@ gulp.task('styles', function() {
     .pipe(gulp.dest('dist/stylegen-assets/styles'));
 });
 
-gulp.task('asset-revisioning', ['styles', 'scripts'], function () {
+gulp.task('asset-revisioning', ['styles', 'scripts', 'vendor-assets'], function () {
   return gulp.src('./dist/stylegen-assets/**/*.{css,js}', { base: 'dist/stylegen-assets' })
     .pipe(rev())
     .pipe(gulp.dest('dist/stylegen-assets'))  // write rev'd stylegen-assets to build dir
