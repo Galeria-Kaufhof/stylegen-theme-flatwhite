@@ -13,4 +13,4 @@
     navItem.addClass('active');
     tabs.find(link.attr('href')).addClass('active')
   });
-}(jQuery))
+}(window && window.jQuery))
