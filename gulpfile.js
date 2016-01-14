@@ -21,6 +21,7 @@ gulp.task('clean', function() {
 
 gulp.task('vendor-assets', function() {
   return gulp.src([
+    'node_modules/jquery/dist/jquery.js',
     'node_modules/prismjs/prism.js',
     'node_modules/prismjs/themes/prism.css'
   ])
