@@ -1,18 +1,13 @@
 .sgfw-preview-state-variant {
-  overflow: hidden;
   display: inline-block;
 }
 .sgfw-preview-state-variant:last-of-type {
   padding-bottom: 0;
 }
 .sgfw-preview {
-  padding-top: 0.5rem;
   overflow: hidden;
   position: relative;
   top: 0;
   left: 0;
   transform: rotate(0);
-}
-.sgfw-preview {
-  padding-bottom: 1rem;
 }
