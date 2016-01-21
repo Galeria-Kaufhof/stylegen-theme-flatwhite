@@ -42,11 +42,11 @@
         </nav>
         {{! just show the default template }}
         <div class="sgfw-preview sgfw-tabs-item active" id="{{slug}}-preview">
-          {{{template}}}
+          {{{template.content}}}
         </div>
 
         <div class="sgfw-code sgfw-tabs-item" id="{{slug}}-code-example">
-          <pre><code class="language-html">{{template}}</code></pre>
+          <pre><code class="language-html">{{template.content}}</code></pre>
         </div>
       </div>
 
@@ -75,13 +75,13 @@
             <div class="sgfw-tabs-item active" id="{{state.slug}}-preview">
               {{#each state.content as |c| }}
                 <div class="sgfw-preview sgfw-preview-state-variant">
-                  {{{c}}}
+                  {{{c.content}}}
                 </div>
               {{/each}}
             </div>
 
             <div class="sgfw-code sgfw-tabs-item" id="{{state.slug}}-code-example">
-              <pre class="sgfw-preview-state-variant-code">{{#each state.content as |c| }}<code class="language-html">{{c}}</code>{{/each}}</pre>
+              <pre class="sgfw-preview-state-variant-code">{{#each state.content as |c| }}<code class="language-html">{{c.content}}</code>{{/each}}</pre>
             </div>
           </div>
 
