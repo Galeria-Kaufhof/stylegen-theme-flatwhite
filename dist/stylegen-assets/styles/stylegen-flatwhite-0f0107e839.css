@@ -206,7 +206,9 @@ li.nav-item {
   position: relative;
   top: 0;
   left: 0;
-  transform: rotate(0);
+  border: 0;
+  background-color: transparent;
+  transition: height 0.5s;
 }
 .state-headline {
   padding-bottom: 0.5rem;
