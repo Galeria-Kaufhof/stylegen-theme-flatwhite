@@ -9,24 +9,24 @@
   <link rel="stylesheet" href="{{ rellink './stylegen-assets/styles/stylegen-flatwhite.css' }}">
 </head>
 <body>
-  <header class="sgfw-header">
-    <h1 class="sgfw-h1">Styleguide</h1>
+  <header class="header">
+    <h1 class="headline-prio-1">Styleguide</h1>
   </header>
 
-  <div class="sgfw-content-wrapper">
-    <nav class="sgfw-nav test-stylegen-main-nav">
+  <div class="content-wrapper">
+    <nav class="nav test-stylegen-main-nav">
       {{#*inline "sg.main-link-item"}}
-        <li class="sgfw-nav-item sgfw-list-item">
-          <a class="sgfw-nav-link" href="{{ rellink link }}">{{label}}</a>
+        <li class="nav-item list-item">
+          <a class="nav-link" href="{{ rellink link }}">{{label}}</a>
           {{#if children}}
-            <ul class="sgfw-nav-children test-stylegen-children">
+            <ul class="nav-children test-stylegen-children">
               {{> sg.main-link-list children}}
             </ul>
           {{/if}}
         </li>
       {{/inline}}
 
-      <ul class="sgfw-nav-list sgfw-list">
+      <ul class="nav-list list">
         {{#*inline "sg.main-link-list"}}
           {{#each this}}
             {{> sg.main-link-item}}
@@ -37,7 +37,7 @@
       </ul>
     </nav>
 
-    <main class="sgfw-content">
+    <main class="content">
       {{{content}}}
     </main>
   </div>

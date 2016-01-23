@@ -1,10 +1,10 @@
-.sgfw-preview-state-variant {
+.preview-state-variant {
   display: inline-block;
 }
-.sgfw-preview-state-variant:last-of-type {
+.preview-state-variant:last-of-type {
   padding-bottom: 0;
 }
-.sgfw-preview {
+.preview {
   overflow: hidden;
   position: relative;
   top: 0;

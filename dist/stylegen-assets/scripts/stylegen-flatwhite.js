@@ -1,15 +1,15 @@
 (function($){
   "use strict";
 
-  $('.sgfw-tabs .sgfw-tabs-nav-link').on('click', function(e) {
+  $('.tabs .tabs-nav-link').on('click', function(e) {
     var tabs, link, navItem;
     e.preventDefault();
 
     link = $(e.target);
-    navItem = link.closest('.sgfw-tabs-nav-item');
-    tabs = link.closest('.sgfw-tabs');
+    navItem = link.closest('.tabs-nav-item');
+    tabs = link.closest('.tabs');
 
-    tabs.find('.sgfw-tabs-item, .sgfw-tabs-nav-item').removeClass('active');
+    tabs.find('.tabs-item, .tabs-nav-item').removeClass('active');
     navItem.addClass('active');
     tabs.find(link.attr('href')).addClass('active')
   });

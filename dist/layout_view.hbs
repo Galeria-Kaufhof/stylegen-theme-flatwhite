@@ -6,27 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="{{ rellink './stylegen-assets/vendor/prism-6d14265e81.css' }}">
-  <link rel="stylesheet" href="{{ rellink './stylegen-assets/styles/stylegen-flatwhite-77edee4af7.css' }}">
+  <link rel="stylesheet" href="{{ rellink './stylegen-assets/styles/stylegen-flatwhite-cd072e9328.css' }}">
 </head>
 <body>
-  <header class="sgfw-header">
-    <h1 class="sgfw-h1">Styleguide</h1>
+  <header class="header">
+    <h1 class="headline-prio-1">Styleguide</h1>
   </header>
 
-  <div class="sgfw-content-wrapper">
-    <nav class="sgfw-nav test-stylegen-main-nav">
+  <div class="content-wrapper">
+    <nav class="nav test-stylegen-main-nav">
       {{#*inline "sg.main-link-item"}}
-        <li class="sgfw-nav-item sgfw-list-item">
-          <a class="sgfw-nav-link" href="{{ rellink link }}">{{label}}</a>
+        <li class="nav-item list-item">
+          <a class="nav-link" href="{{ rellink link }}">{{label}}</a>
           {{#if children}}
-            <ul class="sgfw-nav-children test-stylegen-children">
+            <ul class="nav-children test-stylegen-children">
               {{> sg.main-link-list children}}
             </ul>
           {{/if}}
         </li>
       {{/inline}}
 
-      <ul class="sgfw-nav-list sgfw-list">
+      <ul class="nav-list list">
         {{#*inline "sg.main-link-list"}}
           {{#each this}}
             {{> sg.main-link-item}}
@@ -37,13 +37,13 @@
       </ul>
     </nav>
 
-    <main class="sgfw-content">
+    <main class="content">
       {{{content}}}
     </main>
   </div>
 
   <script>window.jQuery || document.write('<script src=\'{{ rellink "./stylegen-assets/vendor/jquery-56f1d01ee4.js" }}\'><\/script>')</script>
   <script src="{{ rellink './stylegen-assets/vendor/prism-503b810d8a.js' }}"></script>
-  <script src="{{ rellink './stylegen-assets/scripts/stylegen-flatwhite-9c4b121251.js' }}"></script>
+  <script src="{{ rellink './stylegen-assets/scripts/stylegen-flatwhite-9636626b39.js' }}"></script>
 </body>
 </html>

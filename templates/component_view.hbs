@@ -1,17 +1,17 @@
 
   <article id="component-{{id}}">
     <header>
-      <h2 class="sgfw-h2">{{headline}}</h2>
+      <h2 class="headline-prio-2">{{headline}}</h2>
     </header>
 
     {{#if docs.0.label}}
-      <div class="sgfw-tabs">
+      <div class="tabs">
         {{#if docs.1.label}}
-          <nav class="sgfw-tabs-nav">
-            <ul class="sgfw-list sgfw-tabs-nav-list">
+          <nav class="tabs-nav">
+            <ul class="list tabs-nav-list">
               {{#each docs}}
-                <li class="sgfw-list-item sgfw-tabs-nav-item {{#if @first}}active{{/if}}">
-                  <a href="#{{../id}}-{{label}}" class="sgfw-tabs-nav-link">{{label}}</a>
+                <li class="list-item tabs-nav-item {{#if @first}}active{{/if}}">
+                  <a href="#{{../id}}-{{label}}" class="tabs-nav-link">{{label}}</a>
                 </li>
               {{/each}}
             </ul>
@@ -19,7 +19,7 @@
         {{/if}}
 
         {{#each docs}}
-          <div class="sgfw-markdown-container sgfw-tabs-item {{#if @first}}active{{/if}}" id="{{../id}}-{{label}}">
+          <div class="markdown-container tabs-item {{#if @first}}active{{/if}}" id="{{../id}}-{{label}}">
               {{{content}}}
           </div>
         {{/each}}
@@ -29,22 +29,22 @@
     {{#unless states}}
     {{! just show the default template }}
 
-      <div class="sgfw-tabs">
-        <nav class="sgfw-tabs-nav">
-          <ul class="sgfw-list sgfw-tabs-nav-list">
-            <li class="sgfw-list-item sgfw-tabs-nav-item active">
-              <a href="#{{slug}}-preview" class="sgfw-tabs-nav-link">Preview</a>
+      <div class="tabs">
+        <nav class="tabs-nav">
+          <ul class="list tabs-nav-list">
+            <li class="list-item tabs-nav-item active">
+              <a href="#{{slug}}-preview" class="tabs-nav-link">Preview</a>
             </li>
-            <li class="sgfw-list-item sgfw-tabs-nav-item">
-              <a href="#{{slug}}-code-example" class="sgfw-tabs-nav-link">Code</a>
+            <li class="list-item tabs-nav-item">
+              <a href="#{{slug}}-code-example" class="tabs-nav-link">Code</a>
             </li>
           </ul>
         </nav>
 
-        <iframe class="sgfw-preview sgfw-tabs-item active" id="{{slug}}-preview" src="{{ rellink template.path }}" width="100%" height="100px">
+        <iframe class="preview tabs-item active" id="{{slug}}-preview" src="{{ rellink template.path }}" width="100%" height="100px">
         </iframe>
 
-        <div class="sgfw-code sgfw-tabs-item" id="{{slug}}-code-example">
+        <div class="code tabs-item" id="{{slug}}-code-example">
           <pre><code class="language-html">{{template.content}}</code></pre>
         </div>
       </div>
@@ -52,33 +52,33 @@
     {{else}}
       {{! show the rendering of each modifier (default view should be configured as a modifier, if it should be listed too) }}
       {{#each states as |state| }}
-        <div class="sgfw-state">
+        <div class="state">
 
-          <h3 class="sgfw-h3 sgfw-state-headline">{{state.label}}</h3>
+          <h3 class="headline-prio-3 state-headline">{{state.label}}</h3>
 
           {{#if state.doc}}
-            <div class="sgfw-copy">{{{state.doc}}}</div>
+            <div class="copy">{{{state.doc}}}</div>
           {{/if}}
 
-          <div class="sgfw-tabs">
-            <nav class="sgfw-tabs-nav">
-              <ul class="sgfw-list sgfw-tabs-nav-list">
-                <li class="sgfw-list-item sgfw-tabs-nav-item active">
-                  <a href="#{{state.slug}}-preview" class="sgfw-tabs-nav-link">Preview</a>
+          <div class="tabs">
+            <nav class="tabs-nav">
+              <ul class="list tabs-nav-list">
+                <li class="list-item tabs-nav-item active">
+                  <a href="#{{state.slug}}-preview" class="tabs-nav-link">Preview</a>
                 </li>
-                <li class="sgfw-list-item sgfw-tabs-nav-item">
-                  <a href="#{{state.slug}}-code-example" class="sgfw-tabs-nav-link">Code</a>
+                <li class="list-item tabs-nav-item">
+                  <a href="#{{state.slug}}-code-example" class="tabs-nav-link">Code</a>
                 </li>
               </ul>
             </nav>
-            <div class="sgfw-tabs-item active" id="{{state.slug}}-preview">
+            <div class="tabs-item active" id="{{state.slug}}-preview">
               {{#each state.content as |c| }}
-                <iframe class="sgfw-preview sgfw-preview-state-variant" src="{{ rellink c.path }}" width="100%" height="100px"></iframe>
+                <iframe class="preview preview-state-variant" src="{{ rellink c.path }}" width="100%" height="100px"></iframe>
               {{/each}}
             </div>
 
-            <div class="sgfw-code sgfw-tabs-item" id="{{state.slug}}-code-example">
-              <pre class="sgfw-preview-state-variant-code">{{#each state.content as |c| }}<code class="language-html">{{c.content}}</code>{{/each}}</pre>
+            <div class="code tabs-item" id="{{state.slug}}-code-example">
+              <pre class="preview-state-variant-code">{{#each state.content as |c| }}<code class="language-html">{{c.content}}</code>{{/each}}</pre>
             </div>
           </div>
 
