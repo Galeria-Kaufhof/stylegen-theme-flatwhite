@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="{{ rellink './stylegen-assets/vendor/prism-6d14265e81.css' }}">
-  <link rel="stylesheet" href="{{ rellink './stylegen-assets/styles/stylegen-flatwhite-0f0107e839.css' }}">
+  <link rel="stylesheet" href="{{ rellink './stylegen-assets/styles/stylegen-flatwhite-6b73a05295.css' }}">
 </head>
 <body>
   <header class="header">
@@ -17,7 +17,7 @@
     <nav class="nav test-stylegen-main-nav">
       {{#*inline "sg.main-link-item"}}
         <li class="nav-item list-item">
-          <a class="nav-link" href="{{ rellink link }}">{{label}}</a>
+          <a class="nav-link link" href="{{ rellink link }}">{{label}}</a>
           {{#if children}}
             <ul class="nav-children test-stylegen-children">
               {{> sg.main-link-list children}}
@@ -44,6 +44,6 @@
 
   <script>window.jQuery || document.write('<script src=\'{{ rellink "./stylegen-assets/vendor/jquery-56f1d01ee4.js" }}\'><\/script>')</script>
   <script src="{{ rellink './stylegen-assets/vendor/prism-503b810d8a.js' }}"></script>
-  <script src="{{ rellink './stylegen-assets/scripts/stylegen-flatwhite-54f75b2261.js' }}"></script>
+  <script src="{{ rellink './stylegen-assets/scripts/stylegen-flatwhite-66283c5ed2.js' }}"></script>
 </body>
 </html>

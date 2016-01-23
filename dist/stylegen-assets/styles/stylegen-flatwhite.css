@@ -3,7 +3,6 @@
 html {
 /* Change default typefaces here */
   font-family: serif;
-  font-size: 100%;
   -webkit-font-smoothing: antialiased;
 }
 p {
@@ -86,9 +85,14 @@ code {
   margin-top: 0;
 }
 html.sg-flatwhite {
-  font-family: 'Lato', sans-serif;
   margin: 0;
   padding: 0;
+}
+html.sg-flatwhite,
+html.sg-flatwhite button,
+html.sg-flatwhite input {
+  font-family: 'Lato', sans-serif;
+  font-size: 100%;
 }
 .content-wrapper {
   *zoom: 1;
@@ -123,28 +127,30 @@ html.sg-flatwhite {
 .markdown-container h6 {
   font-family: 'Montserrat', sans-serif;
 }
-.content {
-  *zoom: 1;
-  float: left;
-  clear: none;
-  text-align: inherit;
-  width: 74.25%;
-  margin-left: 0%;
-  margin-right: 3%;
-}
-.content:before,
-.content:after {
-  content: '';
-  display: table;
-}
-.content:after {
-  clear: both;
-}
-.content:last-child {
-  margin-right: 0%;
-}
 .header {
   padding: 5rem 3rem;
+}
+.link {
+  color: #000;
+  text-decoration: none;
+  background-color: transparent;
+  border: 0;
+}
+.link:hover {
+  text-decoration: underline;
+  color: #afacac;
+}
+.link:focus {
+  outline: none;
+}
+.link:active {
+  color: #585555;
+}
+.horizontal-list-item {
+  display: inline-block;
+}
+.horizontal-list {
+  list-style-type: none;
 }
 .markdown-container {
   overflow: hidden;
@@ -152,13 +158,6 @@ html.sg-flatwhite {
 li.nav-item {
   list-style: none;
   margin: 0;
-}
-.nav-link {
-  color: #000;
-  text-decoration: none;
-}
-.nav-link:hover {
-  text-decoration: underline;
 }
 .nav-list,
 .nav-children {
@@ -174,6 +173,7 @@ li.nav-item {
   width: 22.75%;
   margin-left: 0%;
   margin-right: 3%;
+  display: none;
 }
 .nav:before,
 .nav:after {
@@ -194,6 +194,32 @@ li.nav-item {
 }
 .page {
   padding-bottom: 5rem;
+}
+.preview-breakpoints-button:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+.preview-breakpoints-item {
+  border: 1px solid #000;
+  border-left: 0;
+}
+.preview-breakpoints-item:first-of-type {
+  border-left: 1px solid #000;
+  border-radius: 1rem 0 0 1rem;
+  padding-left: 0.5rem;
+}
+.preview-breakpoints-item:last-of-type {
+  border-radius: 0 1rem 1rem 0;
+  padding-right: 0.5rem;
+}
+.preview-breakpoints-item.active {
+  background-color: #373737;
+}
+.preview-breakpoints-item.active .preview-breakpoints-button {
+  color: #fff;
+}
+.preview-breakpoints {
+  text-align: center;
 }
 .preview-state-variant {
   display: inline-block;

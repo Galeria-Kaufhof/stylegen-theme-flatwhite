@@ -15,6 +15,43 @@
   });
 
 
+
+
+// preview-breakpoints-button
+//
+  $('.preview-breakpoints-button').on('click', function(e) {
+    var link, links, root, preview, linkItem, alreadyActive;
+    e.preventDefault();
+
+    link = $(e.target);
+    linkItem = link.closest('.preview-breakpoints-item');
+    root = link.closest('.preview-breakpoints');
+    links = root.find('.preview-breakpoints-item');
+    preview = root.find('.preview');
+
+    alreadyActive = linkItem.hasClass('active') ? true : false;
+
+    links.removeClass('active');
+
+    linkItem.toggleClass('active');
+
+    if (alreadyActive) {
+      linkItem.toggleClass('active');
+    }
+
+    if (linkItem.hasClass('active')) {
+      preview.css("width", link.data('width'));
+    } else {
+      preview.css("width", "100%")
+    }
+  });
+
+
+
+
+
+
+
   var resizeIFrames = function() {
     // we memoize our iframes here (so if anyone in the far future wants to add components async, this has to be adjusted)
     var iframes = $('iframe.auto-height');
@@ -24,13 +61,10 @@
       $iframe = $(iframe);
 
       resize = function() {
-        var scrollHeight;
-
         if ($iframeBody) {
-          scrollHeight = $iframeBody.height() + 'px';
-          if (i === 0) { console.log(scrollHeight); }
-          $iframe.height(scrollHeight);
+          $iframe.height($iframeBody.height() + 'px');
           setTimeout(resize, 500);
+
         } else {
           $iframe.load(function() {
             $iframeBody = $(iframe.contentWindow.document.body);

@@ -11,7 +11,7 @@
 }
 .tabs-nav-item:after {
   content: '|';
-  color: #afacac;
+  color: ft-inactive;
 }
 .tabs-nav-item:last-of-type:after {
   content: '';
@@ -21,7 +21,7 @@
 }
 .tabs-nav-link,
 .tabs-nav-item.active .tabs-nav-link:hover {
-  color: #afacac;
+  color: ft-inactive;
 }
 .tabs-nav-item.active .tabs-nav-link {
   color: #000;

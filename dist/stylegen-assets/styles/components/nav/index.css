@@ -2,13 +2,6 @@ li.nav-item {
   list-style: none;
   margin: 0;
 }
-.nav-link {
-  color: #000;
-  text-decoration: none;
-}
-.nav-link:hover {
-  text-decoration: underline;
-}
 .nav-list,
 .nav-children {
   padding: 0;
@@ -16,6 +9,7 @@ li.nav-item {
 }
 .nav {
   overflow: hidden;
+  display: none;
 }
 .nav > .nav-list > .nav-item {
   margin-top: 0.5rem;

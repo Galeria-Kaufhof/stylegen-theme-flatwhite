@@ -1,0 +1,17 @@
+@require '../../globals/_colors'
+
+.link
+  color #000
+  text-decoration none
+  background-color transparent
+  border 0
+
+  &:hover
+    text-decoration underline
+    color ft-inactive
+
+  &:focus
+    outline none
+
+  &:active
+    color darken(ft-inactive, 50%)

@@ -17,7 +17,7 @@
     <nav class="nav test-stylegen-main-nav">
       {{#*inline "sg.main-link-item"}}
         <li class="nav-item list-item">
-          <a class="nav-link" href="{{ rellink link }}">{{label}}</a>
+          <a class="nav-link link" href="{{ rellink link }}">{{label}}</a>
           {{#if children}}
             <ul class="nav-children test-stylegen-children">
               {{> sg.main-link-list children}}
