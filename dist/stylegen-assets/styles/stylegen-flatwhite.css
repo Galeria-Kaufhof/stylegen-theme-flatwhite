@@ -234,7 +234,7 @@ li.nav-item {
   left: 0;
   border: 0;
   background-color: transparent;
-  transition: height 0.5s;
+  transition: height 0.5s, width 0.5s, margin-left 0.5s;
 }
 .state-headline {
   padding-bottom: 0.5rem;
