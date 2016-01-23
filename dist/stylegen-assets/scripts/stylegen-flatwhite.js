@@ -20,12 +20,13 @@
 // preview-breakpoints-button
 //
   $('.preview-breakpoints-button').on('click', function(e) {
-    var link, links, root, preview, linkItem, alreadyActive;
+    var link, links, root, preview, linkItem, alreadyActive, parent, newWidth, parentWidth, offset;
     e.preventDefault();
 
     link = $(e.target);
     linkItem = link.closest('.preview-breakpoints-item');
     root = link.closest('.preview-breakpoints');
+    parent = root.parent();
     links = root.find('.preview-breakpoints-item');
     preview = root.find('.preview');
 
@@ -40,7 +41,15 @@
     }
 
     if (linkItem.hasClass('active')) {
-      preview.css("width", link.data('width'));
+      newWidth = link.data('width');
+      parentWidth = parent.innerWidth();
+      preview.css("width", newWidth + 'px');
+
+      if (newWidth > parentWidth) {
+        offset = ((newWidth - parentWidth) / 2 * -1);
+
+        preview.css('margin-left', offset + 'px');
+      };
     } else {
       preview.css("width", "100%")
     }
