@@ -1,5 +1,5 @@
 .preview-state-variant {
-  display: inline-block;
+  padding-bottom: 0.5rem;
 }
 .preview-state-variant:last-of-type {
   padding-bottom: 0;
@@ -11,5 +11,6 @@
   left: 0;
   border: 0;
   background-color: transparent;
+  display: block;
   transition: height 0.5s, width 0.5s, margin-left 0.5s;
 }
