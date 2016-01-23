@@ -4,7 +4,6 @@
       <h2 class="sgfw-h2">{{headline}}</h2>
     </header>
 
-
     {{#if docs.0.label}}
       <div class="sgfw-tabs">
         {{#if docs.1.label}}
@@ -28,6 +27,7 @@
     {{/if}}
 
     {{#unless states}}
+    {{! just show the default template }}
 
       <div class="sgfw-tabs">
         <nav class="sgfw-tabs-nav">
@@ -40,10 +40,9 @@
             </li>
           </ul>
         </nav>
-        {{! just show the default template }}
-        <div class="sgfw-preview sgfw-tabs-item active" id="{{slug}}-preview">
-          {{{template.content}}}
-        </div>
+
+        <iframe class="sgfw-preview sgfw-tabs-item active" id="{{slug}}-preview" src="{{ rellink template.path }}" width="100%" height="100px">
+        </iframe>
 
         <div class="sgfw-code sgfw-tabs-item" id="{{slug}}-code-example">
           <pre><code class="language-html">{{template.content}}</code></pre>
@@ -74,9 +73,7 @@
             </nav>
             <div class="sgfw-tabs-item active" id="{{state.slug}}-preview">
               {{#each state.content as |c| }}
-                <div class="sgfw-preview sgfw-preview-state-variant">
-                  {{{c.content}}}
-                </div>
+                <iframe class="sgfw-preview sgfw-preview-state-variant" src="{{ rellink c.path }}" width="100%" height="100px"></iframe>
               {{/each}}
             </div>
 

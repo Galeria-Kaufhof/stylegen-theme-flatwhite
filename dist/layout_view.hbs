@@ -7,21 +7,6 @@
 
   <link rel="stylesheet" href="{{ rellink './stylegen-assets/vendor/prism-6d14265e81.css' }}">
   <link rel="stylesheet" href="{{ rellink './stylegen-assets/styles/stylegen-flatwhite-77edee4af7.css' }}">
-
-  <!-- TODO: make css deps more dynamic, maybe allow tag reference here -->
-  {{#each cssDeps}}
-    <link rel="stylesheet" href="{{this}}">
-  {{/each}}
-
-  {{#if head}}
-    <!-- SYLEGEN: dependencies.templates.head -->
-    {{{ head }}}
-    <!-- SYLEGEN: dependencies.templates.head (end) -->
-  {{else}}
-    <!-- SYLEGEN: dependencies.templates.head NO DEPS -->
-  {{/if}}
-
-  <!-- TODO: allow head js tags -->
 </head>
 <body>
   <header class="sgfw-header">
@@ -56,17 +41,6 @@
       {{{content}}}
     </main>
   </div>
-  {{#each jsDeps}}
-    <script src="{{this}}"></script>
-  {{/each}}
-
-  {{#if bottom}}
-    <!-- SYLEGEN: dependencies.templates.bottom -->
-    {{{ bottom }}}
-    <!-- SYLEGEN: dependencies.templates.bottom (end) -->
-  {{else}}
-    <!-- SYLEGEN: dependencies.templates.bottom NO DEPS -->
-  {{/if}}
 
   <script>window.jQuery || document.write('<script src=\'{{ rellink "./stylegen-assets/vendor/jquery-56f1d01ee4.js" }}\'><\/script>')</script>
   <script src="{{ rellink './stylegen-assets/vendor/prism-503b810d8a.js' }}"></script>
