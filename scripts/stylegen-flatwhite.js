@@ -33,6 +33,7 @@
     alreadyActive = linkItem.hasClass('active') ? true : false;
 
     links.removeClass('active');
+    preview.css('margin-left', '0px');
 
     linkItem.toggleClass('active');
 
