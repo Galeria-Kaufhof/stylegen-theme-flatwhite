@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TBD</title>
+
+  <!-- TODO: make css deps more dynamic, maybe allow tag reference here -->
+  {{#each cssDeps}}
+    <link rel="stylesheet" href="{{this}}">
+  {{/each}}
+
+  {{#if head}}
+    <!-- SYLEGEN: dependencies.templates.head -->
+    {{{ head }}}
+    <!-- SYLEGEN: dependencies.templates.head (end) -->
+  {{else}}
+    <!-- SYLEGEN: dependencies.templates.head NO DEPS -->
+  {{/if}}
+
+  <!-- TODO: allow head js tags -->
+</head>
+<body>
+  {{{content}}}
+
+  {{#each jsDeps}}
+    <script src="{{this}}"></script>
+  {{/each}}
+
+  {{#if bottom}}
+    <!-- SYLEGEN: dependencies.templates.bottom -->
+    {{{ bottom }}}
+    <!-- SYLEGEN: dependencies.templates.bottom (end) -->
+  {{else}}
+    <!-- SYLEGEN: dependencies.templates.bottom NO DEPS -->
+  {{/if}}
+</body>
+</html>

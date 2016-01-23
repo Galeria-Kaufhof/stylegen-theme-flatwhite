@@ -1,0 +1,26 @@
+.preview-breakpoints-button:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+.preview-breakpoints-item {
+  border: 1px solid #000;
+  border-left: 0;
+}
+.preview-breakpoints-item:first-of-type {
+  border-left: 1px solid #000;
+  border-radius: 1rem 0 0 1rem;
+  padding-left: 0.5rem;
+}
+.preview-breakpoints-item:last-of-type {
+  border-radius: 0 1rem 1rem 0;
+  padding-right: 0.5rem;
+}
+.preview-breakpoints-item.active {
+  background-color: #373737;
+}
+.preview-breakpoints-item.active .preview-breakpoints-button {
+  color: #fff;
+}
+.preview-breakpoints {
+  text-align: center;
+}
