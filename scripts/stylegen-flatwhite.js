@@ -15,6 +15,29 @@
   });
 
 
+  $('.nav-close').on('click', function(e) {
+    var close, nav;
+
+    close = $(e.target);
+    nav = close.closest('.nav');
+
+    nav.css('right', '100%').css('left', '-100%');
+  });
+
+  $('.nav-toggle').on('click', function(e) {
+    var toggle, nav;
+
+    toggle = $(e.target);
+    nav = $(toggle.data('target'));
+
+    if (toggle.hasClass('active')) {
+      nav.css('right', '100%').css('left', '-100%');
+    } else {
+      nav.css('right', '70%').css('left', '0%');
+    }
+
+    toggle.toggleClass('active');
+  });
 
 
 // preview-breakpoints-button

@@ -7,12 +7,40 @@
 
 
 .nav
-  overflow hidden
-  col(1/4)
-  display none
+  position fixed
+  top 0
+  right 100%
+  bottom 0
+  left -100%
+  overflow scroll
+  background-color #fff
+  z-index 9999
+  padding 2rem
+  border-right 1px solid #f4f4f4
+
+  transition right .5s
 
   & > .nav-list > .nav-item
     margin-top .5rem
 
     & > .nav-link
       font-weight bold
+
+
+.nav-close, .nav-toggle
+  background-color transparent
+  border none
+
+  &:focus
+    outline none
+
+.nav-close
+  position absolute
+  top 1rem
+  right 1rem
+
+.nav-toggle
+  position absolute
+  top 1rem
+  right 1rem
+  text-decoration underline
