@@ -13,10 +13,12 @@
   bottom 0
   left -100%
   overflow scroll
-  background-color #fff
+  background-color #f8f8f8
   z-index 9999
   padding 2rem
-  border-right 1px solid #f4f4f4
+  border-right 1px solid #f0f0f0
+  box-shadow 0 0 7px 1px rgba(0,0,0,.45)
+  font-family: 'Roboto', sans-serif;
 
   transition right .5s
 
@@ -27,20 +29,48 @@
       font-weight bold
 
 
-.nav-close, .nav-toggle
-  background-color transparent
-  border none
+button.nav-close,
+button.nav-toggle
+  border 1px solid #000
+  background-color #222
+  color #fff
+  border-radius 20px
+  height 40px
+  text-align center
+  padding 0 20px
+  text-decoration none
 
   &:focus
     outline none
 
+  
 .nav-close
+  width 40px
+  padding 0
   position absolute
   top 1rem
   right 1rem
+  content: ' '
+  
+  &:before
+    font-family FontAwesome
+    content: '\f00d'
+    width: 1rem
+    
 
 .nav-toggle
   position absolute
-  top 1rem
+  top 2rem
   right 1rem
-  text-decoration underline
+
+  &:before
+    font-family FontAwesome
+    content: '\f0c9'
+    width: 1rem
+    margin-right 6px
+    display inline-block
+  &.active
+    color #222
+    background #f8f8f8
+    &:before
+      content: '\f00d'

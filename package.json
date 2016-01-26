@@ -17,7 +17,8 @@
     "gulp-sequence": "^0.4.4",
     "gulp-stylus": "^2.2.0",
     "gulp-util": "^3.0.7",
-    "jeet": "^6.1.2"
+    "jeet": "^6.1.2",
+    "rupture": "^0.6.1"
   },
   "dependencies": {
     "jquery": "^2.2.0",

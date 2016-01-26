@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=Lato:400,300,700|Montserrat:400,700");
+/* @import url("https://fonts.googleapis.com/css?family=Lato:400,300,700|Montserrat:400,700");*/
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
+@import url("https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab|Roboto+Mono");
 /* Typebase.less v0.1.0 | MIT License */
 html {
 /* Change default typefaces here */
@@ -25,6 +27,7 @@ ul ol,
 ol ol {
   margin-top: 0;
   margin-bottom: 0;
+  list-style-type: square;
 }
 blockquote {
   line-height: 1.5rem;
@@ -44,14 +47,14 @@ h6 {
   line-height: 1.5rem;
 }
 h1 {
-  font-size: 4.242rem;
-  line-height: 4.5rem;
-  margin-top: 3rem;
+  font-size: 3.242rem;
+  line-height: 3.5rem;
+  margin-top: 2rem;
 }
 h2 {
-  font-size: 2.828rem;
-  line-height: 3rem;
-  margin-top: 3rem;
+  font-size: 2.5rem;
+  line-height: 2.7rem;
+  margin-top: 2rem;
 }
 h3 {
   font-size: 1.414rem;
@@ -84,14 +87,18 @@ code {
 .hug {
   margin-top: 0;
 }
-html.sg-flatwhite {
+html.sg-flatwhite,
+body {
   margin: 0;
   padding: 0;
+  font-family: 'Roboto Slab', sans-serif;
 }
 html.sg-flatwhite,
+body,
 html.sg-flatwhite button,
-html.sg-flatwhite input {
-  font-family: 'Lato', sans-serif;
+body button,
+html.sg-flatwhite input,
+body input {
   font-size: 100%;
 }
 .content-wrapper {
@@ -125,10 +132,49 @@ html.sg-flatwhite input {
 .markdown-container h5,
 .headline-prio-6,
 .markdown-container h6 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+}
+.headline-prio-1,
+.markdown-container h1,
+.headline-prio-2,
+.markdown-container h2 {
+  font-weight: 200;
+}
+.headline-prio-3,
+.markdown-container h3,
+.headline-prio-4,
+.markdown-container h4 {
+  font-weight: 400;
+}
+code {
+  font-family: 'Roboto Mono', sans-serif;
+}
+ul {
+  list-style-type: square;
 }
 .header {
-  padding: 5rem 3rem;
+  padding: 1.275rem 1rem 1.5rem;
+  *zoom: 1;
+  width: auto;
+  max-width: 960px;
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+.header:before,
+.header:after {
+  content: '';
+  display: table;
+}
+.header:after {
+  clear: both;
+}
+.header h1 {
+  margin: 0;
 }
 .link {
   color: #000;
@@ -157,7 +203,21 @@ html.sg-flatwhite input {
 }
 li.nav-item {
   list-style: none;
-  margin: 0;
+  margin: 0.35 0;
+  padding-bottom: 0.4em;
+  font-family: 'Roboto';
+  font-size: 1.2rem;
+  border-bottom: 1px solid #ccc;
+}
+li.nav-item ul.nav-children {
+  margin: 0.35em 0;
+}
+li.nav-item ul.nav-children li {
+  font-family: 'Roboto Slab';
+  font-size: 1rem;
+  line-height: 1.7;
+  border: 0;
+  padding-bottom: 0.15em;
 }
 .nav-list,
 .nav-children {
@@ -171,10 +231,12 @@ li.nav-item {
   bottom: 0;
   left: -100%;
   overflow: scroll;
-  background-color: #fff;
+  background-color: #f8f8f8;
   z-index: 9999;
   padding: 2rem;
-  border-right: 1px solid #f4f4f4;
+  border-right: 1px solid #f0f0f0;
+  box-shadow: 0 0 7px 1px rgba(0,0,0,0.45);
+  font-family: 'Roboto', sans-serif;
   transition: right 0.5s;
 }
 .nav > .nav-list > .nav-item {
@@ -183,25 +245,52 @@ li.nav-item {
 .nav > .nav-list > .nav-item > .nav-link {
   font-weight: bold;
 }
-.nav-close,
-.nav-toggle {
-  background-color: transparent;
-  border: none;
+button.nav-close,
+button.nav-toggle {
+  border: 1px solid #000;
+  background-color: #222;
+  color: #fff;
+  border-radius: 20px;
+  height: 40px;
+  text-align: center;
+  padding: 0 20px;
+  text-decoration: none;
 }
-.nav-close:focus,
-.nav-toggle:focus {
+button.nav-close:focus,
+button.nav-toggle:focus {
   outline: none;
 }
 .nav-close {
+  width: 40px;
+  padding: 0;
   position: absolute;
   top: 1rem;
   right: 1rem;
+  content: ' ';
+}
+.nav-close:before {
+  font-family: FontAwesome;
+  content: '\f00d';
+  width: 1rem;
 }
 .nav-toggle {
   position: absolute;
-  top: 1rem;
+  top: 2rem;
   right: 1rem;
-  text-decoration: underline;
+}
+.nav-toggle:before {
+  font-family: FontAwesome;
+  content: '\f0c9';
+  width: 1rem;
+  margin-right: 6px;
+  display: inline-block;
+}
+.nav-toggle.active {
+  color: #222;
+  background: #f8f8f8;
+}
+.nav-toggle.active:before {
+  content: '\f00d';
 }
 .page {
   padding-bottom: 5rem;

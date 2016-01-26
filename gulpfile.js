@@ -8,6 +8,7 @@ var gulpSequence = require("gulp-sequence");
 var plumber = require('gulp-plumber');
 var stylus = require("gulp-stylus");
 var jeet = require("jeet");
+var rupture = require('rupture');
 
 var rev = require('gulp-rev');
 var revReplace = require("gulp-rev-replace");
@@ -36,7 +37,7 @@ gulp.task('scripts', function() {
 gulp.task('styles', function() {
   return gulp.src('styles/**/[^_]*.styl')
     .pipe(plumber())
-    .pipe(stylus({ use: jeet(), compress: false }))
+    .pipe(stylus({ use: [jeet(), rupture()], compress: false }))
     .pipe(gulp.dest('dist/stylegen-assets/styles'));
 });
 
