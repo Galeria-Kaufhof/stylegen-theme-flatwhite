@@ -52,6 +52,7 @@ button.nav-toggle {
   text-align: center;
   padding: 0 20px;
   text-decoration: none;
+  font-size: 1rem;
 }
 button.nav-close:focus,
 button.nav-toggle:focus {
@@ -63,17 +64,21 @@ button.nav-toggle:focus {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  content: ' ';
 }
 .nav-close:before {
   font-family: FontAwesome;
   content: '\f00d';
   width: 1rem;
+  position: absolute;
+  top: 12px;
+  left: 13px;
 }
 .nav-toggle {
   position: absolute;
   top: 2rem;
   right: 1rem;
+  transition: background 0.35s;
+  transition: color 0.15s;
 }
 .nav-toggle:before {
   font-family: FontAwesome;

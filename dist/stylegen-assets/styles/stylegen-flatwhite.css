@@ -4,7 +4,8 @@
 /* Typebase.less v0.1.0 | MIT License */
 html {
 /* Change default typefaces here */
-  font-family: serif;
+  font-family: 'Roboto Slab', serif;
+  font-size: 87.5%;
   -webkit-font-smoothing: antialiased;
 }
 p {
@@ -27,7 +28,6 @@ ul ol,
 ol ol {
   margin-top: 0;
   margin-bottom: 0;
-  list-style-type: square;
 }
 blockquote {
   line-height: 1.5rem;
@@ -50,23 +50,27 @@ h1 {
   font-size: 3.242rem;
   line-height: 3.5rem;
   margin-top: 2rem;
+  letter-spacing: -0.015rem;
 }
 h2 {
   font-size: 2.5rem;
   line-height: 2.7rem;
   margin-top: 2rem;
+  letter-spacing: -0.015rem;
 }
 h3 {
-  font-size: 1.414rem;
+  font-size: 1.6rem;
+  letter-spacing: 0.02rem;
 }
 h4 {
-  font-size: 0.707rem;
+  font-size: 1.2rem;
+  color: #444;
 }
 h5 {
-  font-size: 0.471333333333333rem;
+  font-size: 1rem;
 }
 h6 {
-  font-size: 0.3535rem;
+  font-size: 1rem;
 }
 table {
   margin-top: 1.5rem;
@@ -91,15 +95,6 @@ html.sg-flatwhite,
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto Slab', sans-serif;
-}
-html.sg-flatwhite,
-body,
-html.sg-flatwhite button,
-body button,
-html.sg-flatwhite input,
-body input {
-  font-size: 100%;
 }
 .content-wrapper {
   *zoom: 1;
@@ -255,6 +250,7 @@ button.nav-toggle {
   text-align: center;
   padding: 0 20px;
   text-decoration: none;
+  font-size: 1rem;
 }
 button.nav-close:focus,
 button.nav-toggle:focus {
@@ -266,17 +262,21 @@ button.nav-toggle:focus {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  content: ' ';
 }
 .nav-close:before {
   font-family: FontAwesome;
   content: '\f00d';
   width: 1rem;
+  position: absolute;
+  top: 12px;
+  left: 13px;
 }
 .nav-toggle {
   position: absolute;
   top: 2rem;
   right: 1rem;
+  transition: background 0.35s;
+  transition: color 0.15s;
 }
 .nav-toggle:before {
   font-family: FontAwesome;
