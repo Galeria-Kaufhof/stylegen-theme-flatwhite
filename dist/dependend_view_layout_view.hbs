@@ -19,7 +19,9 @@
 
   <!-- TODO: allow head js tags -->
 </head>
-<body>
+{{! We have a display type of table-cell here, because we want to see element margins on ending child elements }}
+<body style="display: table-cell">
+
   {{{content}}}
 
   {{#each jsDeps}}
@@ -33,5 +35,59 @@
   {{else}}
     <!-- SYLEGEN: dependencies.templates.bottom NO DEPS -->
   {{/if}}
+
+  <script type="text/javascript">
+  (function(){
+    "use strict";
+
+    var frameHeight = 0, elements, i, element, isVisible;
+    // element.getBoundingClientRect().top
+    // visible => element.ownerDocument
+
+    var checks = {
+      isIgnoredTag: function(element) {
+        var ignoredTags = {
+          "SCRIPT": true,
+          "LINK": true,
+          "META": true
+        };
+
+        return ignoredTags[element.tagName];
+      },
+
+      isHidden: function(element) {
+        return element.offsetWidth <= 0 && element.offsetHeight <= 0 && !element.getClientRects().length;
+      },
+
+      isVisible: function(element) {
+        return !checks.isHidden(element);
+      }
+    };
+
+
+    var checkFrameHeight = function() {
+      var elements = document.body.getElementsByTagName('*');
+
+      for (i = elements.length; i--;) {
+        element = elements[i];
+        isVisible = checks.isVisible(element);
+
+        switch(true) {
+          case (isVisible && checks.isIgnoredTag(element)):
+            break;
+          default:
+            frameHeight = Math.max(frameHeight, element.getBoundingClientRect().top + element.getBoundingClientRect().height)
+        }
+      }
+
+      document.body.setAttribute('data-frame-height', frameHeight);
+
+      setTimeout(checkFrameHeight, 500);
+    };
+
+    checkFrameHeight();
+  }());
+
+  </script>
 </body>
 </html>

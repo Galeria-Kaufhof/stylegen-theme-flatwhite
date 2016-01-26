@@ -80,38 +80,52 @@
   });
 
 
+  var IFrameHeightObserver = function(iframe) {
+    this.iframe = iframe;
 
+    // lets memoize the access on the jquery element of our iframe
+    this.iframe.$ = $(iframe);
 
-
-
-
-  var resizeIFrames = function() {
-    // we memoize our iframes here (so if anyone in the far future wants to add components async, this has to be adjusted)
-    var iframes = $('iframe.auto-height');
-
-    $.each(iframes, function(i, iframe) {
-      var $iframeBody, $iframe, resize;
-      $iframe = $(iframe);
-
-      resize = function() {
-        if ($iframeBody) {
-          $iframe.height($iframeBody.height() + 'px');
-          setTimeout(resize, 500);
-
-        } else {
-          $iframe.load(function() {
-            $iframeBody = $(iframe.contentWindow.document.body);
-            $iframe.height($iframeBody.height() + 'px');
-            setTimeout(resize, 500);
-          });
-        }
-      };
-
-      resize();
-    });
+    this.iframeBody = null;
   };
 
-  resizeIFrames();
+  IFrameHeightObserver.prototype.checkDelay = 500;
+  IFrameHeightObserver.prototype.defaultMinHeight = 100;
 
+  IFrameHeightObserver.prototype.setFrameHeight = function(height) {
+    this.iframe.$.height(height + 'px');
+    setTimeout(this.check.bind(this), this.checkDelay);
+  };
 
+  IFrameHeightObserver.prototype.getFrameHeight = function() {
+    var frameHeight, bodyHeight, resultHeight;
+
+    frameHeight = this.iframeBody.$.attr('data-frame-height') || 0;
+    bodyHeight = Math.max(0, this.iframeBody.$.outerHeight(true) || 0);
+    resultHeight = Math.max(bodyHeight, frameHeight);
+
+    return resultHeight > 0 ? resultHeight : this.defaultMinHeight;
+  };
+
+  IFrameHeightObserver.prototype.check = function() {
+    if (this.iframeBody !== null) {
+      this.setFrameHeight(this.getFrameHeight());
+
+    } else {
+      // seems that the iframe is not ready yet, and we don't have a reference to our desired content
+      this.iframe.$.load(function() {
+        this.iframeDoc = this.iframe.contentWindow.document;
+        this.iframeBody = this.iframeDoc.body;
+        this.iframeBody.$ = $(this.iframeBody);
+
+        this.setFrameHeight(this.getFrameHeight());
+      }.bind(this));
+    }
+
+    return this;
+  };
+
+  $.each($('.preview > iframe'), function(i, iframe) {
+    new IFrameHeightObserver(iframe).check();
+  });
 }(window && window.jQuery))
