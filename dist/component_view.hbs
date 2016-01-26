@@ -41,11 +41,11 @@
           </ul>
         </nav>
 
-        <div class="tabs-item active">
+        <div class="tabs-item active" id="{{state.slug}}-preview">
           <div class="preview-breakpoints">
-            <iframe class="preview auto-height" id="{{slug}}-preview" src="{{ rellink template.path }}" width="100%" height="0px">
-            </iframe>
-
+            <div class="preview" id="{{slug}}-preview">
+              <iframe src="{{ rellink template.path }}" class="auto-height"  width="100%" height="0px"></iframe>
+            </div>
             <ul class="horizontal-list">
               <li class="horizontal-list-item preview-breakpoints-item">
                 <button class="preview-breakpoints-button link" data-width="372">mobile</button></li><li class="horizontal-list-item preview-breakpoints-item">
@@ -85,9 +85,11 @@
 
             <div class="tabs-item active" id="{{state.slug}}-preview">
               <div class="preview-breakpoints">
-                {{#each state.content as |c| }}
-                  <iframe class="preview preview-state-variant auto-height" src="{{ rellink c.path }}" width="100%" height="0px"></iframe>
-                {{/each}}
+                <div class="preview">
+                  {{#each state.content as |c| }}
+                    <iframe class="preview-state-variant auto-height" src="{{ rellink c.path }}" width="100%" height="0px"></iframe>
+                  {{/each}}
+                </div>
                 <ul class="horizontal-list">
                   <li class="horizontal-list-item preview-breakpoints-item">
                     <button class="preview-breakpoints-button link" data-width="372">mobile</button></li><li class="horizontal-list-item preview-breakpoints-item">

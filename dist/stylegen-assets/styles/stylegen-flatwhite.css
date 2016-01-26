@@ -243,10 +243,12 @@ li.nav-item {
   position: relative;
   top: 0;
   left: 0;
-  border: 0;
   background-color: transparent;
   display: block;
   transition: height 0.5s, width 0.5s, margin-left 0.5s;
+}
+.preview iframe {
+  border: 0;
 }
 .state-headline {
   padding-bottom: 0.5rem;
