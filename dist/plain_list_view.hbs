@@ -1,9 +1,12 @@
 <div class="components">
+  <header class="components-header">
+    <h1 class="headline-prio-1">{{label}}</h1>
+  </header>
+
   {{#if preflight}}
-    <header class="preflight-text test-stylegen-preflight markdown-container">
-      <h1 class="headline-prio-1">{{label}}</h1>
-      {{{preflight}}}
-    </header>
+    <div  class="preflight-text test-stylegen-preflight markdown-container">
+        {{{preflight}}}
+    </div>
   {{/if}}
 
   {{#each components}}
