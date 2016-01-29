@@ -75,7 +75,7 @@
         preview.css('margin-left', offset + 'px');
       };
     } else {
-      preview.css("width", "100%")
+      preview.css("width", "100%");
     }
   });
 
