@@ -1,14 +1,15 @@
 {
   "name": "stylegen-theme-flatwhite",
 
-  "version": "0.0.1",
+  "version": "0.0.0",
 
   "description": "a basic (flat and white) theme for stylegen",
 
   "main": "package.json",
 
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "node_modules/.bin/gulp build"
   },
 
   "author": "Falk Hoppe <falkhoppe81@gmail.com>",
