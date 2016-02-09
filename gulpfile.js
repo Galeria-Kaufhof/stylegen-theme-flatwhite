@@ -35,7 +35,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('styles', function() {
-  return gulp.src('styles/**/[^_]*.styl')
+  return gulp.src('styles/*.styl')
     .pipe(plumber())
     .pipe(stylus({ use: [jeet(), rupture()], compress: false }))
     .pipe(gulp.dest('dist/stylegen-assets/styles'));
