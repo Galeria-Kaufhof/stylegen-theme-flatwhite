@@ -1,19 +1,13 @@
 {
   "name": "stylegen-theme-flatwhite",
-
-  "version": "0.0.0",
-
+  "version": "0.0.1",
   "description": "a basic (flat and white) theme for stylegen",
-
   "main": "package.json",
-
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublish": "node_modules/.bin/gulp build"
   },
-
   "author": "Falk Hoppe <falkhoppe81@gmail.com>",
-
   "contributors": [
     {
       "name": "Rico Pfaus",
@@ -24,14 +18,11 @@
       "email": "falkhoppe81@gmail.com"
     }
   ],
-
   "license": "MIT",
-
   "dependencies": {
     "jquery": "^2.2.0",
     "prismjs": "^1.3.0"
   },
-
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-clean": "^0.3.1",
