@@ -108,20 +108,14 @@
   };
 
   IFrameHeightObserver.prototype.check = function() {
-    if (this.iframeBody !== null) {
-      this.setFrameHeight(this.getFrameHeight());
-
-    } else {
+    if (Boolean(this.iframeBody) === false) {
       // seems that the iframe is not ready yet, and we don't have a reference to our desired content
-      this.iframe.$.load(function() {
-        this.iframeDoc = this.iframe.contentWindow.document;
-        this.iframeBody = this.iframeDoc.body;
-        this.iframeBody.$ = $(this.iframeBody);
-
-        this.setFrameHeight(this.getFrameHeight());
-      }.bind(this));
+      this.iframeDoc = this.iframe.contentWindow.document;
+      this.iframeBody = this.iframeDoc.body;
+      this.iframeBody.$ = $(this.iframeBody);
     }
 
+    this.setFrameHeight(this.getFrameHeight());
     return this;
   };
 
