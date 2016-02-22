@@ -23,7 +23,7 @@ const config = {
 const paths = require('./path-config')(config)
 
 gulp.task('clean', function() {
-  return del(paths.dist)
+  return del(paths.build.dist)
 })
 
 gulp.task('jquery', function() {
@@ -36,7 +36,19 @@ gulp.task('prism', function() {
   .pipe(gulp.dest(paths.build.assets.vendor))
 })
 
-gulp.task('vendor-assets', ['jquery', 'prism'])
+gulp.task('ionicons-fonts', function() {
+  return gulp.src([path.resolve(paths.src.ionicons.fonts, '**/*')], { base: path.resolve(paths.src.ionicons.fonts) })
+  .pipe(gulp.dest(paths.build.assets.fonts))
+})
+
+gulp.task('ionicons-styles', function() {
+  return gulp.src([paths.src.ionicons.css])
+  .pipe(gulp.dest(paths.build.assets.vendor))
+})
+
+gulp.task('ionicons', ['ionicons-fonts', 'ionicons-styles'])
+
+gulp.task('vendor-assets', ['jquery', 'prism', 'ionicons'])
 
 gulp.task('scripts', function() {
   return gulp.src(path.resolve(paths.src.scripts, '**/*'))

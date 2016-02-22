@@ -16,16 +16,22 @@ module.exports = function(config) {
         root: path.resolve(__dirname, config.dist, 'stylegen-assets'),
         vendor: path.resolve(__dirname, config.dist, 'stylegen-assets', 'vendor'),
         scripts: path.resolve(__dirname, config.dist, 'stylegen-assets', 'scripts'),
+        fonts: path.resolve(__dirname, config.dist, 'stylegen-assets', 'fonts'),
         styles: path.resolve(__dirname, config.dist, 'stylegen-assets', 'styles')
       }
     }
   }
 
-  paths.src.jquery = path.resolve(paths.src.nodeModules, 'jquery/dist/jquery.js')
+  paths.src.jquery = path.resolve(paths.src.nodeModules, 'jquery/dist/jquery.min.js')
 
   paths.src.prism = {
     js: path.resolve(paths.src.nodeModules, 'prismjs/prism.js'),
     css: path.resolve(paths.src.nodeModules, 'prismjs/themes/prism.css')
+  }
+
+  paths.src.ionicons = {
+    css: path.resolve(paths.src.nodeModules, 'ionicons/css/ionicons.min.css'),
+    fonts: path.resolve(paths.src.nodeModules, 'ionicons/fonts')
   }
 
   return paths
