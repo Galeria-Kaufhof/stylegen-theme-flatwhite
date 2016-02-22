@@ -15,6 +15,16 @@ var revReplace = require("gulp-rev-replace");
 
 var npmConfig = require(path.resolve(__dirname, 'package.json'));
 
+var config = {
+  src: 'src',
+  dist: 'dist'
+};
+
+var paths = {
+  src: {},
+  dist: {}
+};
+
 gulp.task('clean', function() {
   return del(['dist/**/*']);
 });
