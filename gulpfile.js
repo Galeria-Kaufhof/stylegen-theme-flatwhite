@@ -1,26 +1,26 @@
 "use strict";
 
-var path = require("path");
-var gulp = require("gulp");
-var del = require('del');
-var gulpSequence = require("gulp-sequence");
+const path = require("path");
+const gulp = require("gulp");
+const del = require('del');
+const gulpSequence = require("gulp-sequence");
+const plumber = require('gulp-plumber');
 
-var plumber = require('gulp-plumber');
-var stylus = require("gulp-stylus");
-var jeet = require("jeet");
-var rupture = require('rupture');
+const stylus = require("gulp-stylus");
+const jeet = require("jeet");
+const rupture = require('rupture');
 
-var rev = require('gulp-rev');
-var revReplace = require("gulp-rev-replace");
+const rev = require('gulp-rev');
+const revReplace = require("gulp-rev-replace");
 
-var npmConfig = require(path.resolve(__dirname, 'package.json'));
+const npmConfig = require(path.resolve(__dirname, 'package.json'));
 
-var config = {
+let config = {
   src: 'src',
   dist: 'dist'
 };
 
-var paths = {
+let paths = {
   src: {},
   dist: {}
 };
@@ -60,7 +60,7 @@ gulp.task('asset-revisioning', ['styles', 'scripts', 'vendor-assets'], function 
 });
 
 gulp.task('templates', ['asset-revisioning'], function() {
-  var manifest = gulp.src(path.resolve(__dirname, 'dist/stylegen-assets/rev-manifest.json'));
+  let manifest = gulp.src(path.resolve(__dirname, 'dist/stylegen-assets/rev-manifest.json'));
 
   return gulp.src('templates/**/[^_]*.hbs')
   .pipe(plumber())
