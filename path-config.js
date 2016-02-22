@@ -34,5 +34,10 @@ module.exports = function(config) {
     fonts: path.resolve(paths.src.nodeModules, 'ionicons/fonts')
   }
 
+  paths.src.lato = {
+    css: path.resolve(paths.src.nodeModules, 'lato-font/css/lato-font.min.css'),
+    fonts: path.resolve(paths.src.nodeModules, 'lato-font/fonts')
+  }
+
   return paths
 }

@@ -48,7 +48,19 @@ gulp.task('ionicons-styles', function() {
 
 gulp.task('ionicons', ['ionicons-fonts', 'ionicons-styles'])
 
-gulp.task('vendor-assets', ['jquery', 'prism', 'ionicons'])
+gulp.task('lato-fonts', function() {
+  return gulp.src([path.resolve(paths.src.lato.fonts, '**/*')], { base: path.resolve(paths.src.lato.fonts) })
+  .pipe(gulp.dest(paths.build.assets.fonts))
+})
+
+gulp.task('lato-styles', function() {
+  return gulp.src([paths.src.lato.css])
+  .pipe(gulp.dest(paths.build.assets.vendor))
+})
+
+gulp.task('lato', ['lato-fonts', 'lato-styles'])
+
+gulp.task('vendor-assets', ['jquery', 'prism', 'ionicons', 'lato'])
 
 gulp.task('scripts', function() {
   return gulp.src(path.resolve(paths.src.scripts, '**/*'))
@@ -56,7 +68,7 @@ gulp.task('scripts', function() {
 })
 
 gulp.task('styles', function() {
-  return gulp.src(`${paths.src.scripts}/*.styl`)
+  return gulp.src(`${paths.src.styles}/*.styl`)
   .pipe(plumber())
   .pipe(stylus({ use: [jeet(), rupture()], compress: false }))
   .pipe(gulp.dest(paths.build.assets.styles))
