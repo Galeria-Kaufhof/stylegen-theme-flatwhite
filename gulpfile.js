@@ -10,6 +10,9 @@ const stylus = require("gulp-stylus")
 const jeet = require("jeet")
 const rupture = require('rupture')
 
+const autoprefixer = require('gulp-autoprefixer')
+
+
 const rev = require('gulp-rev')
 const revReplace = require("gulp-rev-replace")
 
@@ -71,6 +74,10 @@ gulp.task('styles', function() {
   return gulp.src(`${paths.src.styles}/*.styl`)
   .pipe(plumber())
   .pipe(stylus({ use: [jeet(), rupture()], compress: false }))
+  .pipe(autoprefixer({
+    browsers: ['last 2 versions'],
+    cascade: false
+  }))
   .pipe(gulp.dest(paths.build.assets.styles))
 })
 
