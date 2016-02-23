@@ -93,33 +93,29 @@
                 <div class="code content-group-item" id="{{state.slug}}-code-example">
                   <pre class="preview-state-variant-code">{{#each state.content as |c| }}<code class="language-html">{{c.content}}</code>{{/each}}</pre>
                 </div>
+
+                <ul class="dropdown">
+                  <li class="dropdown-item">
+                    <button class="preview-breakpoints-button dropdown-link" data-width="372">select viewport</button></li><li class="dropdown-item">
+                    <button class="preview-breakpoints-button dropdown-link" data-width="372">mobile</button></li><li class="dropdown-item">
+                    <button class="preview-breakpoints-button dropdown-link" data-width="768">tablet</button></li><li class="dropdown-item">
+                    <button class="preview-breakpoints-button dropdown-link" data-width="1280">desktop</button></li>
+                </ul>
               </div>
             </div>
-
-            <footer class="component-footer">
-              <ul class="dropdown">
-                <li class="dropdown-item">
-                  <button class="preview-breakpoints-button dropdown-link" data-width="372">select viewport</button></li><li class="dropdown-item">
-                  <button class="preview-breakpoints-button dropdown-link" data-width="372">mobile</button></li><li class="dropdown-item">
-                  <button class="preview-breakpoints-button dropdown-link" data-width="768">tablet</button></li><li class="dropdown-item">
-                  <button class="preview-breakpoints-button dropdown-link" data-width="1280">desktop</button></li>
-              </ul>
-            </footer>
           </section>
         {{/each}}
 
       {{/unless}}
     </div>
 
-    {{#unless states}}
-      <footer class="component-footer">
-        <ul class="dropdown">
-          <li class="dropdown-item">
-            <button class="preview-breakpoints-button dropdown-link" data-width="372">select viewport</button></li><li class="dropdown-item">
-            <button class="preview-breakpoints-button dropdown-link" data-width="372">mobile</button></li><li class="dropdown-item">
-            <button class="preview-breakpoints-button dropdown-link" data-width="768">tablet</button></li><li class="dropdown-item">
-            <button class="preview-breakpoints-button dropdown-link" data-width="1280">desktop</button></li>
-        </ul>
-      </footer>
-    {{/unless}}
+    <footer class="component-footer">
+      <!-- <ul class="dropdown">
+        <li class="dropdown-item">
+          <button class="preview-breakpoints-button dropdown-link" data-width="372">select viewport</button></li><li class="dropdown-item">
+          <button class="preview-breakpoints-button dropdown-link" data-width="372">mobile</button></li><li class="dropdown-item">
+          <button class="preview-breakpoints-button dropdown-link" data-width="768">tablet</button></li><li class="dropdown-item">
+          <button class="preview-breakpoints-button dropdown-link" data-width="1280">desktop</button></li>
+      </ul> -->
+    </footer>
   </article>
