@@ -80,9 +80,10 @@
   });
 
 
-  var IFrameHeightObserver = function(iframe) {
+  var IFrameHeightObserver = function(iframe, index) {
     this.iframe = iframe;
-
+    this.index = index;
+    this.checkCount = 0;
     // lets memoize the access on the jquery element of our iframe
     this.iframe.$ = $(iframe);
 
@@ -90,10 +91,12 @@
   };
 
   IFrameHeightObserver.prototype.checkDelay = 500;
+  IFrameHeightObserver.prototype.reCheckThreshold = 30;
   IFrameHeightObserver.prototype.defaultMinHeight = 100;
 
   IFrameHeightObserver.prototype.setFrameHeight = function(height) {
     this.iframe.$.height(height + 'px');
+    console.log("setFrameHeight", this.index, this.iframeBody.$.attr('data-frame-height'), this.iframe.$.height(), new Date().getTime());
     setTimeout(this.check.bind(this), this.checkDelay);
   };
 
@@ -109,10 +112,24 @@
 
   IFrameHeightObserver.prototype.check = function() {
     if (Boolean(this.iframeBody) === false) {
-      // seems that the iframe is not ready yet, and we don't have a reference to our desired content
-      this.iframeDoc = this.iframe.contentWindow.document;
-      this.iframeBody = this.iframeDoc.body;
-      this.iframeBody.$ = $(this.iframeBody);
+      try {
+        // seems that the iframe is not ready yet, and we don't have a reference to our desired content
+        this.iframeDoc = this.iframe.contentWindow.document;
+        this.iframeBody = this.iframeDoc.body;
+        this.iframeBody.$ = $(this.iframeBody);
+      } catch(e) {
+        if (e.name === 'TypeError') {
+          // iframe is probably not initialized yet
+          // so lets try for a while
+          if (this.checkCount <= this.reCheckThreshold) {
+            this.checkCount++;
+            setTimeout(this.check.bind(this), this.checkDelay);
+            return this;
+          }
+        }
+
+        throw e;
+      }
     }
 
     this.setFrameHeight(this.getFrameHeight());
@@ -120,6 +137,7 @@
   };
 
   $.each($('.preview > iframe'), function(i, iframe) {
-    new IFrameHeightObserver(iframe).check();
+    console.log(i)
+    new IFrameHeightObserver(iframe, i).check();
   });
 }(window && window.jQuery))
