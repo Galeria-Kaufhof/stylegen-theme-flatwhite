@@ -96,7 +96,6 @@
 
   IFrameHeightObserver.prototype.setFrameHeight = function(height) {
     this.iframe.$.height(height + 'px');
-    console.log("setFrameHeight", this.index, this.iframeBody.$.attr('data-frame-height'), this.iframe.$.height(), new Date().getTime());
     setTimeout(this.check.bind(this), this.checkDelay);
   };
 
@@ -137,7 +136,6 @@
   };
 
   $.each($('.preview > iframe'), function(i, iframe) {
-    console.log(i)
     new IFrameHeightObserver(iframe, i).check();
   });
 }(window && window.jQuery))
