@@ -11,9 +11,10 @@
   <link rel="stylesheet" href="{{ rellink './stylegen-assets/styles/stylegen-theme-flatwhite.css' }}">
 </head>
 <body>
-  <header class="header">
-    <h1 class="headline-prio-1">Styleguide {{projectName}}</h1>
-    <button class="nav-toggle" data-target=".nav-main">Menu</button>
+  <header class="header nav-bar">
+    <button class="nav-toggle nav-bar-menu-toggle ion-navicon" data-target=".nav-main">Open Menu</button>
+
+    <h1 class="headline-prio-1 nav-bar-title">{{projectName}}</h1>
   </header>
 
   <div class="content-wrapper">
