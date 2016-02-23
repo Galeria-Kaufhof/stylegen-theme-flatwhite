@@ -1,112 +1,120 @@
 
-  <article id="component-{{id}}">
-    <header>
-      <h2 class="headline-prio-2">{{headline}}</h2>
+  <article id="component-{{id}}" class="component">
+    <header class="component-header">
+      <h2 class="component-label">{{headline}}</h2>
     </header>
 
-    {{#if docs.0.label}}
-      <div class="tabs">
-        {{#if docs.1.label}}
-          <nav class="tabs-nav">
-            <ul class="list tabs-nav-list">
-              {{#each docs}}
-                <li class="list-item tabs-nav-item {{#if @first}}active{{/if}}">
-                  <a href="#{{../id}}-{{label}}" class="tabs-nav-link link">{{label}}</a>
-                </li>
-              {{/each}}
-            </ul>
-          </nav>
-        {{/if}}
+    <div class="component-content">
 
-        {{#each docs}}
-          <div class="markdown-container tabs-item {{#if @first}}active{{/if}}" id="{{../id}}-{{label}}">
-              {{{content}}}
-          </div>
-        {{/each}}
-      </div>
-    {{/if}}
-
-    {{#unless states}}
-    {{! just show the default template }}
-
-      <div class="tabs">
-        <nav class="tabs-nav">
-          <ul class="list tabs-nav-list">
-            <li class="list-item tabs-nav-item active">
-              <a href="#{{component.slug}}-preview" class="tabs-nav-link">Preview</a>
-            </li>
-            <li class="list-item tabs-nav-item">
-              <a href="#{{component.slug}}-code-example" class="tabs-nav-link link">Code</a>
-            </li>
-          </ul>
-        </nav>
-
-        <div class="tabs-item active" id="{{state.slug}}-preview">
-          <div class="preview-breakpoints">
-            <div class="preview" id="{{component.slug}}-preview">
-              <iframe src="{{ rellink template.path }}" class="auto-height component-{{component.slug}}-frame"  width="100%" height="0px"></iframe>
-            </div>
-            <ul class="horizontal-list">
-              <li class="horizontal-list-item preview-breakpoints-item">
-                <button class="preview-breakpoints-button link" data-width="372">mobile</button></li><li class="horizontal-list-item preview-breakpoints-item">
-                <button class="preview-breakpoints-button link" data-width="768">tablet</button></li><li class="horizontal-list-item preview-breakpoints-item">
-                <button class="preview-breakpoints-button link" data-width="1280">desktop</button></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="code tabs-item" id="{{component.slug}}-code-example">
-          <pre><code class="language-html">{{template.content}}</code></pre>
-        </div>
-      </div>
-
-    {{else}}
-      {{! show the rendering of each modifier (default view should be configured as a modifier, if it should be listed too) }}
-      {{#each states as |state| }}
-        <div class="state">
-
-          <h3 class="headline-prio-3 state-headline">{{state.label}}</h3>
-
-          {{#if state.doc}}
-            <div class="copy">{{{state.doc}}}</div>
-          {{/if}}
-
-          <div class="tabs">
-            <nav class="tabs-nav">
-              <ul class="list tabs-nav-list">
-                <li class="list-item tabs-nav-item active">
-                  <a href="#{{state.slug}}-preview" class="tabs-nav-link">Preview</a>
-                </li>
-                <li class="list-item tabs-nav-item">
-                  <a href="#{{state.slug}}-code-example" class="tabs-nav-link link">Code</a>
-                </li>
+      {{! ******************************************************* }}
+      {{! Component Documentation                                 }}
+      {{! ******************************************************* }}
+      {{#if docs.0.label}}
+        <div class="component-docs content-group">
+          {{#if docs.1.label}}
+            <nav class="content-group-nav">
+              <ul class="content-group-nav-list">
+                {{#each docs}}<li class="content-group-nav-item {{#if @first}}active{{/if}}"><a href="#{{../id}}-{{label}}" class="content-group-nav-link">{{label}}</a></li>{{/each}}
               </ul>
             </nav>
+          {{/if}}
 
-            <div class="tabs-item active" id="{{state.slug}}-preview">
-              <div class="preview-breakpoints">
-                <div class="preview">
-                  {{#each state.content as |c| }}
-                    <iframe class="preview-state-variant auto-height component-{{state.slug}}-state-frame" id="{{state.slug}}-iframe" src="{{ rellink c.path }}" width="100%" height="0px"></iframe>
-                  {{/each}}
-                </div>
-                <ul class="horizontal-list">
-                  <li class="horizontal-list-item preview-breakpoints-item">
-                    <button class="preview-breakpoints-button link" data-width="372">mobile</button></li><li class="horizontal-list-item preview-breakpoints-item">
-                    <button class="preview-breakpoints-button link" data-width="768">tablet</button></li><li class="horizontal-list-item preview-breakpoints-item">
-                    <button class="preview-breakpoints-button link" data-width="1280">desktop</button></li>
+          {{#each docs}}
+            <div class="markdown-container content-group-item {{#if @first}}active{{/if}}" id="{{../id}}-{{label}}">
+              {{{content}}}
+            </div>
+          {{/each}}
+        </div>
+      {{/if}}
+
+
+
+
+      {{#unless states}}
+        {{! ******************************************************* }}
+        {{! Standard Component Representation                       }}
+        {{! ******************************************************* }}
+        <div class="tabs">
+          <nav class="tabs-nav">
+            <ul class="list tabs-nav-list">
+              <li class="list-item tabs-nav-item active">
+                <a href="#{{component.slug}}-preview" class="tabs-nav-link">Preview</a>
+              </li>
+              <li class="list-item tabs-nav-item">
+                <a href="#{{component.slug}}-code-example" class="tabs-nav-link link">Code</a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="tabs-item active" id="{{state.slug}}-preview">
+            <div class="preview-breakpoints">
+              <div class="preview" id="{{component.slug}}-preview">
+                <iframe src="{{ rellink template.path }}" class="auto-height component-{{component.slug}}-frame"  width="100%" height="0px"></iframe>
+              </div>
+              <ul class="horizontal-list">
+                <li class="horizontal-list-item preview-breakpoints-item">
+                  <button class="preview-breakpoints-button link" data-width="372">mobile</button></li><li class="horizontal-list-item preview-breakpoints-item">
+                  <button class="preview-breakpoints-button link" data-width="768">tablet</button></li><li class="horizontal-list-item preview-breakpoints-item">
+                  <button class="preview-breakpoints-button link" data-width="1280">desktop</button></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="code tabs-item" id="{{component.slug}}-code-example">
+            <pre><code class="language-html">{{template.content}}</code></pre>
+          </div>
+        </div>
+
+      {{else}}
+        {{! ******************************************************* }}
+        {{! Component State Representation                          }}
+        {{! ******************************************************* }}
+        {{! show the rendering of each modifier (default view should be configured as a modifier, if it should be listed too) }}
+        {{#each states as |state| }}
+          <div class="state">
+
+            <h3 class="headline-prio-3 state-headline">{{state.label}}</h3>
+
+            {{#if state.doc}}
+              <div class="copy">{{{state.doc}}}</div>
+            {{/if}}
+
+            <div class="tabs">
+              <nav class="tabs-nav">
+                <ul class="list tabs-nav-list">
+                  <li class="list-item tabs-nav-item active">
+                    <a href="#{{state.slug}}-preview" class="tabs-nav-link">Preview</a>
+                  </li>
+                  <li class="list-item tabs-nav-item">
+                    <a href="#{{state.slug}}-code-example" class="tabs-nav-link link">Code</a>
+                  </li>
                 </ul>
+              </nav>
+
+              <div class="tabs-item active" id="{{state.slug}}-preview">
+                <div class="preview-breakpoints">
+                  <div class="preview">
+                    {{#each state.content as |c| }}
+                      <iframe class="preview-state-variant auto-height component-{{state.slug}}-state-frame" id="{{state.slug}}-iframe" src="{{ rellink c.path }}" width="100%" height="0px"></iframe>
+                    {{/each}}
+                  </div>
+                  <ul class="horizontal-list">
+                    <li class="horizontal-list-item preview-breakpoints-item">
+                      <button class="preview-breakpoints-button link" data-width="372">mobile</button></li><li class="horizontal-list-item preview-breakpoints-item">
+                      <button class="preview-breakpoints-button link" data-width="768">tablet</button></li><li class="horizontal-list-item preview-breakpoints-item">
+                      <button class="preview-breakpoints-button link" data-width="1280">desktop</button></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="code tabs-item" id="{{state.slug}}-code-example">
+                <pre class="preview-state-variant-code">{{#each state.content as |c| }}<code class="language-html">{{c.content}}</code>{{/each}}</pre>
               </div>
             </div>
 
-            <div class="code tabs-item" id="{{state.slug}}-code-example">
-              <pre class="preview-state-variant-code">{{#each state.content as |c| }}<code class="language-html">{{c.content}}</code>{{/each}}</pre>
-            </div>
           </div>
+        {{/each}}
 
-        </div>
-      {{/each}}
-
-    {{/unless}}
-
+      {{/unless}}
+    </div>
   </article>

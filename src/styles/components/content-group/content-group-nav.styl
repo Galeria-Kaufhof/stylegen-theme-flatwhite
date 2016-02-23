@@ -1,0 +1,19 @@
+.content-group-nav
+  encapsulated()
+
+
+  // TODO: ONLY IN LARGER MEDIA QUERIES ----------------------
+  &:after
+    content ""
+    display block
+    border-bottom 1px solid content-group-bdc
+    width 100%
+
+    position absolute
+    bottom 50%
+    left 0
+    right 0
+    top 50%
+
+    transform translateY(-50%)
+    z-index -1
