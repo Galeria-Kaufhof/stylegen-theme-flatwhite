@@ -41,17 +41,11 @@
             </ul>
           </nav>
 
-          <div class="content-group-item active" id="{{state.slug}}-preview">
+          <div class="component-preview-content content-group-item active" id="{{state.slug}}-preview">
             <div class="preview-breakpoints">
               <div class="preview" id="{{component.slug}}-preview">
                 <iframe src="{{ rellink template.path }}" class="auto-height component-{{component.slug}}-frame"  width="100%" height="0px"></iframe>
               </div>
-              <ul class="horizontal-list">
-                <li class="horizontal-list-item preview-breakpoints-item">
-                  <button class="preview-breakpoints-button link" data-width="372">mobile</button></li><li class="horizontal-list-item preview-breakpoints-item">
-                  <button class="preview-breakpoints-button link" data-width="768">tablet</button></li><li class="horizontal-list-item preview-breakpoints-item">
-                  <button class="preview-breakpoints-button link" data-width="1280">desktop</button></li>
-              </ul>
             </div>
           </div>
 
@@ -66,7 +60,7 @@
         {{! ******************************************************* }}
         {{! show the rendering of each modifier (default view should be configured as a modifier, if it should be listed too) }}
         {{#each states as |state| }}
-          <div class="component-state">
+          <section class="component-state">
             <div class="component-state-header">
               <h3 class="component-state-label">{{state.label}}</h3>
             </div>
@@ -85,7 +79,7 @@
               </nav>
 
 
-              <div class="component-state-content">
+              <div class="component-state-content component-preview-content">
                 <div class="content-group-item active" id="{{state.slug}}-preview">
                   <div class="preview-breakpoints">
                     <div class="preview">
@@ -93,12 +87,6 @@
                         <iframe class="preview-state-variant auto-height component-{{state.slug}}-state-frame" id="{{state.slug}}-iframe" src="{{ rellink c.path }}" width="100%" height="0px"></iframe>
                       {{/each}}
                     </div>
-                    <ul class="horizontal-list">
-                      <li class="horizontal-list-item preview-breakpoints-item">
-                        <button class="preview-breakpoints-button link" data-width="372">mobile</button></li><li class="horizontal-list-item preview-breakpoints-item">
-                        <button class="preview-breakpoints-button link" data-width="768">tablet</button></li><li class="horizontal-list-item preview-breakpoints-item">
-                        <button class="preview-breakpoints-button link" data-width="1280">desktop</button></li>
-                    </ul>
                   </div>
                 </div>
 
@@ -108,9 +96,30 @@
               </div>
             </div>
 
-          </div>
+            <footer class="component-footer">
+              <ul class="dropdown">
+                <li class="dropdown-item">
+                  <button class="preview-breakpoints-button dropdown-link" data-width="372">select viewport</button></li><li class="dropdown-item">
+                  <button class="preview-breakpoints-button dropdown-link" data-width="372">mobile</button></li><li class="dropdown-item">
+                  <button class="preview-breakpoints-button dropdown-link" data-width="768">tablet</button></li><li class="dropdown-item">
+                  <button class="preview-breakpoints-button dropdown-link" data-width="1280">desktop</button></li>
+              </ul>
+            </footer>
+          </section>
         {{/each}}
 
       {{/unless}}
     </div>
+
+    {{#unless states}}
+      <footer class="component-footer">
+        <ul class="dropdown">
+          <li class="dropdown-item">
+            <button class="preview-breakpoints-button dropdown-link" data-width="372">select viewport</button></li><li class="dropdown-item">
+            <button class="preview-breakpoints-button dropdown-link" data-width="372">mobile</button></li><li class="dropdown-item">
+            <button class="preview-breakpoints-button dropdown-link" data-width="768">tablet</button></li><li class="dropdown-item">
+            <button class="preview-breakpoints-button dropdown-link" data-width="1280">desktop</button></li>
+        </ul>
+      </footer>
+    {{/unless}}
   </article>
