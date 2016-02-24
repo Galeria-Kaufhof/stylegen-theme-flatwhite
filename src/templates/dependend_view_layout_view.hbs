@@ -64,9 +64,18 @@
       }
     };
 
+    var pxAsDecimal = function(value) {
+      var stripped;
+      if (Boolean(value) && /.*?px/.test(value)) {
+        stripped = value.slice(0, value.indexOf("px"));
+        return parseFloat(stripped);
+      }
+
+      return 0;
+    };
 
     var checkFrameHeight = function() {
-      var elements = document.body.getElementsByTagName('*');
+      var elements = document.body.getElementsByTagName('*'), i, element, isVisible, dimensions, computedStyle, bottomMargin;
 
       for (i = elements.length; i--;) {
         element = elements[i];
@@ -76,7 +85,10 @@
           case (isVisible && checks.isIgnoredTag(element)):
             break;
           default:
-            frameHeight = Math.max(frameHeight, element.getBoundingClientRect().top + element.getBoundingClientRect().height)
+            dimensions = element.getBoundingClientRect();
+            computedStyle = element.currentStyle || window.getComputedStyle(element);
+            bottomMargin = pxAsDecimal(computedStyle.marginBottom);
+            frameHeight = Math.max(frameHeight, dimensions.top + dimensions.height + bottomMargin);
         }
       }
 
