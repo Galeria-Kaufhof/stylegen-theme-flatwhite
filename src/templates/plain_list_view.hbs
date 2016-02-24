@@ -3,12 +3,29 @@
     <h1 class="page-label">{{label}}</h1>
   </header>
 
+  {{! component preflight }}
   {{#if preflight}}
     <div  class="components-page-preflight test-stylegen-preflight markdown-container">
         {{{preflight}}}
     </div>
   {{/if}}
 
+  {{! component list anchor navigation }}
+  {{#if components.1.compiled }}
+    <nav class="anchor-menu">
+      <ul class="anchor-menu-list">
+        {{#each components as |c|}}
+          {{#with c.component as |component|}}
+            <li class="anchor-menu-item">
+              <a href="#{{component.slug}}" class="anchor-menu-link">{{ component.config.label }}</a>
+            </li>
+          {{/with}}
+        {{/each}}
+      </ul>
+    </nav>
+  {{/if}}
+
+  {{! component list }}
   {{#each components}}
     {{{compiled}}}
   {{/each}}
