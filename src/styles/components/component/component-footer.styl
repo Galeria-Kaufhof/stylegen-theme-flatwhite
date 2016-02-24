@@ -6,4 +6,18 @@
   min-height 60px
 
   .dropdown
+    position relative
     float right
+
+    &:after
+      content ""
+      display block
+      width .7rem
+      height .7rem
+      background-color main-contrast-bg
+
+      transform rotate(45deg) translateX(-50%)
+
+      position absolute
+      top -1.5rem
+      left 50%
