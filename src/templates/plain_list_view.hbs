@@ -17,7 +17,7 @@
         {{#each components as |c|}}
           {{#with c.component as |component|}}
             <li class="anchor-menu-item">
-              <a href="#{{component.slug}}" class="anchor-menu-link">{{ component.config.label }}</a>
+              <a href="#component-{{component.slug}}" class="anchor-menu-link">{{ component.config.label }}</a>
             </li>
           {{/with}}
         {{/each}}
