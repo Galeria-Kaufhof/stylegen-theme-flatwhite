@@ -11,45 +11,46 @@
   <link rel="stylesheet" href="{{ rellink './stylegen-assets/styles/stylegen-theme-flatwhite.css' }}">
 </head>
 <body>
-  <header class="header nav-bar">
-    <button class="nav-toggle nav-bar-menu-toggle ion-navicon" data-target=".nav-main">Open Menu</button>
+  <nav class="off-canvas-nav test-stylegen-main-nav">
+    <button class="nav-close"></button>
 
-    <h1 class="headline-prio-1 nav-bar-title">{{projectName}}</h1>
-  </header>
+    {{#*inline "sg.main-link-item"}}
+      <li class="nav-item list-item">
+        <a class="nav-link link" href="{{ rellink link }}">{{label}}</a>
+        {{#if children}}
+          <ul class="nav-children test-stylegen-children">
+            {{> sg.main-link-list children}}
+          </ul>
+        {{/if}}
+      </li>
+    {{/inline}}
 
-  <div class="content-wrapper">
-    <!-- <nav class="nav nav-main test-stylegen-main-nav">
-      <button class="nav-close"></button>
-
-      {{#*inline "sg.main-link-item"}}
-        <li class="nav-item list-item">
-          <a class="nav-link link" href="{{ rellink link }}">{{label}}</a>
-          {{#if children}}
-            <ul class="nav-children test-stylegen-children">
-              {{> sg.main-link-list children}}
-            </ul>
-          {{/if}}
-        </li>
+    <ul class="nav-list list">
+      {{#*inline "sg.main-link-list"}}
+        {{#each this}}
+          {{> sg.main-link-item}}
+        {{/each}}
       {{/inline}}
 
-      <ul class="nav-list list">
-        {{#*inline "sg.main-link-list"}}
-          {{#each this}}
-            {{> sg.main-link-item}}
-          {{/each}}
-        {{/inline}}
+      {{> sg.main-link-list pages }}
+    </ul>
+  </nav>
 
-        {{> sg.main-link-list pages }}
-      </ul>
-    </nav> -->
+  <div class="content-wrapper off-canvas-content">
+    <header class="header nav-bar">
+      <button class="nav-toggle nav-bar-menu-toggle ion-navicon" data-target=".nav-main">Open Menu</button>
+
+      <h1 class="headline-prio-1 nav-bar-title">{{projectName}}</h1>
+    </header>
 
     <main class="content">
       {{{content}}}
     </main>
   </div>
 
-  <script>window.jQuery || document.write('<script src=\'{{ rellink "./stylegen-assets/vendor/jquery.js" }}\'><\/script>')</script>
+  <script src="{{ rellink './stylegen-assets/vendor/jquery.js' }}"></script>
   <script src="{{ rellink './stylegen-assets/vendor/prism.js' }}"></script>
+  <script src="{{ rellink './stylegen-assets/vendor/hammer.js' }}"></script>
   <script src="{{ rellink './stylegen-assets/scripts/stylegen-theme-flatwhite.js' }}"></script>
 </body>
 </html>

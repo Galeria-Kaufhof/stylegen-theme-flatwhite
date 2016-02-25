@@ -22,7 +22,8 @@ module.exports = function(config) {
     }
   }
 
-  paths.src.jquery = path.resolve(paths.src.nodeModules, 'jquery/dist/jquery.min.js')
+  paths.src.jquery = path.resolve(paths.src.nodeModules, 'jquery/dist/jquery.js')
+  paths.src.hammerjs = path.resolve(paths.src.nodeModules, 'hammerjs/hammer.js')
 
   paths.src.prism = {
     js: path.resolve(paths.src.nodeModules, 'prismjs/prism.js'),

@@ -20,6 +20,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "hammerjs": "^2.0.6",
     "ionicons": "^2.0.1",
     "jquery": "^2.2.0",
     "lato-font": "^1.1.1",
