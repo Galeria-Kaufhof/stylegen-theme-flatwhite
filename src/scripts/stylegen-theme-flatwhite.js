@@ -15,28 +15,54 @@
   });
 
 
-  $('.nav-close').on('click', function(e) {
-    var close, nav;
 
-    close = $(e.target);
-    nav = close.closest('.nav');
-
-    nav.css('right', '100%').css('left', '-100%');
-  });
-
-  $('.nav-toggle').on('click', function(e) {
-    var toggle, nav;
-
-    toggle = $(e.target);
-    nav = $(toggle.data('target'));
-
-    if (toggle.hasClass('active')) {
-      nav.css('right', '100%').css('left', '-100%');
-    } else {
-      nav.css('right', '70%').css('left', '0%');
+  var OffCanvasNav = function(nav, content) {
+    if (!nav) {
+      console.error("Off-Canvas Navigation not found", nav);
     }
 
-    toggle.toggleClass('active');
+    if (!content) {
+      console.error("Off-Canvas Content not found", content);
+    }
+
+    this.nav = nav.jquery ? nav : $(nav);
+    this.content = content.jquery ? content : $(content);
+  };
+
+  OffCanvasNav.prototype.showNav = function() {
+    var navWidth = this.nav.width();
+
+    this.content
+    .addClass('active')
+    .css('-moz-transform', `translateX(${ navWidth }px)`)
+    .css('-webkit-transform', `translateX(${ navWidth }px)`)
+    .css('-o-transform', `translateX(${ navWidth }px)`)
+    .css('-ms-transform', `translateX(${ navWidth }px)`)
+    .css('transform', `translateX(${ navWidth }px)`);
+  };
+
+  OffCanvasNav.prototype.hideNav = function() {
+    this.content
+    .addClass('active')
+    .css('-moz-transform', `translateX(px)`)
+    .css('-webkit-transform', `translateX(px)`)
+    .css('-o-transform', `translateX(px)`)
+    .css('-ms-transform', `translateX(px)`)
+    .css('transform', `translateX(px)`);
+  };
+
+  OffCanvasNav.prototype.toggleNav = function() {
+    if (this.content.hasClass('active')) {
+      this.hideNav();
+    } else {
+      this.showNav();
+    }
+  };
+
+  var offCanvasNav = new OffCanvasNav($('.off-canvas-nav')[0], $('.off-canvas-content')[0]);
+
+  $('.nav-toggle').on('click', function(e) {
+    offCanvasNav.toggleNav();
   });
 
 
@@ -100,11 +126,13 @@
   };
 
   IFrameHeightObserver.prototype.getFrameHeight = function() {
-    var frameHeight, bodyHeight, resultHeight;
+    var frameHeight, bodyHeight, resultHeight = 0;
 
-    frameHeight = this.iframeBody.$.attr('data-frame-height') || 0;
-    bodyHeight = Math.max(0, this.iframeBody.$.outerHeight(true) || 0);
-    resultHeight = Math.max(bodyHeight, frameHeight);
+    if (Boolean(this.iframeBody)) {
+        frameHeight = this.iframeBody.$.attr('data-frame-height') || 0;
+        // bodyHeight = Math.max(0, this.iframeBody.$.outerHeight(true) || 0);
+        resultHeight = frameHeight // Math.max(bodyHeight, frameHeight);
+    }
 
     return resultHeight > 0 ? resultHeight : this.defaultMinHeight;
   };
