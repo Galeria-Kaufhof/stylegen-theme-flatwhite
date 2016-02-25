@@ -11,21 +11,19 @@
   <link rel="stylesheet" href="{{ rellink './stylegen-assets/styles/stylegen-theme-flatwhite.css' }}">
 </head>
 <body>
-  <nav class="off-canvas-nav test-stylegen-main-nav">
-    <button class="nav-close"></button>
-
+  <nav class="off-canvas-nav main-nav test-stylegen-main-nav">
     {{#*inline "sg.main-link-item"}}
-      <li class="nav-item list-item">
-        <a class="nav-link link" href="{{ rellink link }}">{{label}}</a>
+      <li class="main-nav-item list-item">
+        <a class="main-nav-link link {{#if children}}has-children{{/if}}" href="{{ rellink link }}">{{label}}</a>
         {{#if children}}
-          <ul class="nav-children test-stylegen-children">
+          <ul class="main-nav-children test-stylegen-children">
             {{> sg.main-link-list children}}
           </ul>
         {{/if}}
       </li>
     {{/inline}}
 
-    <ul class="nav-list list">
+    <ul class="main-nav-list list">
       {{#*inline "sg.main-link-list"}}
         {{#each this}}
           {{> sg.main-link-item}}
