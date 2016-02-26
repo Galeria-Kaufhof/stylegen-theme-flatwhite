@@ -1,16 +1,28 @@
 .dropdown-item
-  display none
+  display inline-block
+  font-size 0
 
   &:after
     font-family 'Ionicons'
-    content '\f123'
+    // content '\f123'
     // display block
     font-size .875rem
     margin-left .3rem
 
-  &:first-of-type
-    display block
-
 .dropdown-link
   font-weight 600
   outline none
+
+
+  &:before
+    font-size 2rem
+    margin-left .8rem
+
+  &.ion-iphone:before
+    font-size 1.8rem
+
+  &.ion-iphone.phablet:before
+    font-size 2rem
+
+  &:hover:before
+    color dropdown-link-hover
