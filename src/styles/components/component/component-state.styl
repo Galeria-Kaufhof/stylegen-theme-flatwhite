@@ -1,6 +1,10 @@
 .component-state
   margin-top 3rem
 
+
+  .component-preview-content
+    padding-bottom 3rem
+
 .component-state-label
   headline-secondary()
   margin-bottom 1rem
@@ -18,12 +22,25 @@
 
   .dropdown
     background-color main-contrast-bg
-    display none
+    // display none
 
     position absolute
-    right 50%
-    top 100%
+    left 50%
+    bottom 0
 
-    transform translateX(50%)
+    transform translateX(-50%)
 
-    padding 1rem 1rem
+    padding 0 1rem 1rem .7rem
+
+    .dropdown-link
+      color dropdown-link-contrast-c
+
+      &:before
+        font-size 1.2rem
+        margin-left .8rem
+
+      &.ion-iphone:before
+        font-size 1rem
+
+    .dropdown-item.active .dropdown-link, .dropdown-link:hover:before
+      color dropdown-link-contrast-active-c
