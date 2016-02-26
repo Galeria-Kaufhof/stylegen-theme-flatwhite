@@ -11,6 +11,12 @@
   <link rel="stylesheet" href="{{ rellink './stylegen-assets/styles/stylegen-theme-flatwhite.css' }}">
 </head>
 <body>
+  <header class="header nav-bar off-canvas-content-fixed-nav-bar">
+    <button class="nav-toggle nav-bar-menu-toggle ion-navicon" data-target=".nav-main">Open Menu</button>
+
+    <h1 class="headline-prio-1 nav-bar-title">{{projectName}}</h1>
+  </header>
+
   <nav class="off-canvas-nav main-nav test-stylegen-main-nav">
     {{#*inline "sg.main-link-item"}}
       <li class="main-nav-item list-item">
@@ -35,12 +41,6 @@
   </nav>
 
   <div class="content-wrapper off-canvas-content">
-    <header class="header nav-bar">
-      <button class="nav-toggle nav-bar-menu-toggle ion-navicon" data-target=".nav-main">Open Menu</button>
-
-      <h1 class="headline-prio-1 nav-bar-title">{{projectName}}</h1>
-    </header>
-
     <main class="content">
       {{{content}}}
     </main>

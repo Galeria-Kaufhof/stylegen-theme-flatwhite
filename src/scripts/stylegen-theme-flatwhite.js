@@ -68,11 +68,11 @@
     }
   };
 
-
   var ocContent = $('.off-canvas-content')[0];
+  var ocSwipeOuts = $('.off-canvas-content, .off-canvas-content-fixed-nav-bar');
   var ocNav = $('.off-canvas-nav')[0];
 
-  var offCanvasNav = new OffCanvasNav(ocNav, ocContent);
+  var offCanvasNav = new OffCanvasNav(ocNav, ocSwipeOuts);
 
   $('.nav-toggle').on('click', function(e) {
     offCanvasNav.toggleNav();
