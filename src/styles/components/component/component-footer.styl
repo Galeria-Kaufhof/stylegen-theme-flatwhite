@@ -1,0 +1,23 @@
+.component-footer
+  overflow hidden
+  background-color component-footer-bg
+  border-bottom 3px solid component-bdc
+  padding 1.5rem
+  min-height 60px
+
+  .dropdown
+    position relative
+    float right
+
+    &:after
+      content ""
+      display block
+      width .7rem
+      height .7rem
+      background-color main-contrast-bg
+
+      transform rotate(45deg) translateY(-1.55rem)
+
+      position absolute
+      bottom 100%
+      left 50%

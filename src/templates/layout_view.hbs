@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" class="sg-flatwhite">
+<head>
+  <meta charset="UTF-8">
+  <title>Styleguide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="{{ rellink './stylegen-assets/vendor/prism.css' }}">
+  <link rel="stylesheet" href="{{ rellink './stylegen-assets/vendor/ionicons.min.css' }}">
+  <link rel="stylesheet" href="{{ rellink './stylegen-assets/vendor/lato-font.min.css' }}">
+  <link rel="stylesheet" href="{{ rellink './stylegen-assets/styles/stylegen-theme-flatwhite.css' }}">
+</head>
+<body>
+  <header class="header nav-bar off-canvas-content-fixed-nav-bar">
+    <button class="nav-toggle nav-bar-menu-toggle ion-navicon" data-target=".nav-main">Open Menu</button>
+
+    <h1 class="headline-prio-1 nav-bar-title">{{projectName}}</h1>
+  </header>
+
+  <nav class="off-canvas-nav main-nav test-stylegen-main-nav">
+    {{#*inline "sg.main-link-item"}}
+      <li class="main-nav-item list-item">
+        <a class="main-nav-link link {{#if children}}has-children{{/if}}" href="{{ rellink link }}">{{label}}</a>
+        {{#if children}}
+          <ul class="main-nav-children test-stylegen-children">
+            {{> sg.main-link-list children}}
+          </ul>
+        {{/if}}
+      </li>
+    {{/inline}}
+
+    <ul class="main-nav-list list">
+      {{#*inline "sg.main-link-list"}}
+        {{#each this}}
+          {{> sg.main-link-item}}
+        {{/each}}
+      {{/inline}}
+
+      {{> sg.main-link-list pages }}
+    </ul>
+  </nav>
+
+  <div class="content-wrapper off-canvas-content">
+    <main class="content">
+      {{{content}}}
+    </main>
+  </div>
+
+  <script src="{{ rellink './stylegen-assets/vendor/jquery.js' }}"></script>
+  <script src="{{ rellink './stylegen-assets/vendor/prism.js' }}"></script>
+  <script src="{{ rellink './stylegen-assets/vendor/hammer.js' }}"></script>
+  <script src="{{ rellink './stylegen-assets/scripts/stylegen-theme-flatwhite.js' }}"></script>
+</body>
+</html>

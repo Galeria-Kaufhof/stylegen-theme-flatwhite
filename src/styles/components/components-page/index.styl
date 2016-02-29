@@ -1,0 +1,42 @@
+@require 'components-page-header'
+@require 'components-page-preflight'
+
+.components-page
+  //
+
+
+.components-page-meta
+  page-padding()
+
++above(tablet)
+  .components-page-meta
+    overflow hidden
+  .components-page-preflight
+    col(2/3)
+
+
+
+  .anchor-menu.components-page-anchor-menu
+    col(1/3)
+    margin-top 0
+    vertical-align top
+
+
+    .anchor-menu-list
+      border-top none
+      border-bottom none
+
+      border-left 1px solid main-ambient-bdc
+      padding-left 1.5rem
+
+
+    .anchor-menu-item
+      display block
+
+
+  +above(hd)
+    .components-page-preflight
+      col(1/2)
+
+    .anchor-menu.components-page-anchor-menu
+      col(1/2)

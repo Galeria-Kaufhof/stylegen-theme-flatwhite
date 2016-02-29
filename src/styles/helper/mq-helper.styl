@@ -1,0 +1,16 @@
+
+measures = {
+  mobile: 320px,
+  phablet: 560px,
+  tablet: 768px,
+  desktop: 1280px,
+  hd: 1800px
+}
+
+above(measure)
+  @media screen and (min-width: measures[measure])
+    {block}
+
+between(measure_bottom, measure_top)
+  @media screen and (min-width: measures[measure_bottom]), (max-width: measures[measure_top])
+    {block}

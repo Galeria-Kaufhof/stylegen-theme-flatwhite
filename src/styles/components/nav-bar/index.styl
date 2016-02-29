@@ -1,0 +1,23 @@
+@require 'nav-bar-title'
+@require 'nav-bar-menu-toggle'
+
+.nav-bar
+  encapsulated()
+
+  position fixed
+  top 0
+  left 0
+  right 0
+
+  z-index 100
+
+  padding .5rem 1rem
+
+  border-bottom 1px solid nav-bar-bdc
+  background-color nav-bar-bg
+
+// .nav-bar ~ .content-wrapper, .nav-bar ~ .main-nav
+//   padding-top 3.8rem
+
+.nav-bar ~ .content-wrapper
+  padding-top 3.8rem

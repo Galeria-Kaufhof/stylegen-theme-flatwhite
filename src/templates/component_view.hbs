@@ -1,0 +1,138 @@
+
+  <article id="component-{{id}}" class="component preview-breakpoints-root">
+    <header class="component-header">
+      <h2 class="component-label ion-cube">{{headline}}</h2>
+    </header>
+
+    <div class="component-content">
+
+      {{! ******************************************************* }}
+      {{! Component Documentation                                 }}
+      {{! ******************************************************* }}
+      {{#if docs.0.label}}
+        <div class="component-docs content-group standalone">
+          {{#if docs.1.label}}
+            <nav class="content-group-nav">
+              <ul class="content-group-nav-list">
+                {{#each docs}}<li class="content-group-nav-item {{#if @first}}active{{/if}}"><a href="#{{../id}}-{{label}}" class="content-group-nav-link">{{label}}</a></li>{{/each}}
+              </ul>
+            </nav>
+          {{/if}}
+
+          {{#each docs}}
+            <div class="markdown-container content-group-item {{#if @first}}active{{/if}}" id="{{../id}}-{{label}}">
+              {{{content}}}
+            </div>
+          {{/each}}
+        </div>
+      {{/if}}
+
+      {{#unless states}}
+        {{! ******************************************************* }}
+        {{! Standard Component Representation                       }}
+        {{! ******************************************************* }}
+        <div class="content-group component-preview">
+          <nav class="content-group-nav component-preview-nav">
+            <ul class="content-group-nav-list">
+              <li class="content-group-nav-item active"><a href="#{{component.slug}}-preview" class="content-group-nav-link component-preview-nav-link">Preview</a></li><li class="content-group-nav-item"><a href="#{{component.slug}}-code-example" class="content-group-nav-link component-preview-nav-link">Code</a></li>
+            </ul>
+          </nav>
+
+          <div class="component-preview-content content-group-item active" id="{{state.slug}}-preview">
+            <div class="preview-breakpoints">
+              <div class="preview" id="{{component.slug}}-preview">
+                <iframe src="{{ rellink template.path }}" class="auto-height component-{{component.slug}}-frame"  width="100%" height="0px"></iframe>
+              </div>
+            </div>
+          </div>
+
+          <div class="code content-group-item" id="{{component.slug}}-code-example">
+            <pre><code class="language-html">{{template.content}}</code></pre>
+          </div>
+        </div>
+
+      {{else}}
+        {{! ******************************************************* }}
+        {{! Component State Representation                          }}
+        {{! ******************************************************* }}
+        {{! show the rendering of each modifier (default view should be configured as a modifier, if it should be listed too) }}
+        {{#each states as |state| }}
+          <section class="component-state preview-breakpoints-root">
+            <div class="component-state-header">
+              <h3 class="component-state-label">{{state.label}}</h3>
+            </div>
+
+            {{#if state.doc}}
+              <div class="component-state-doc-wrapper">
+                <section class="markdown-container component-state-doc">{{{state.doc}}}</section>
+              </div>
+            {{/if}}
+
+            <div class="content-group component-preview">
+              <nav class="content-group-nav component-preview-nav">
+                <ul class="content-group-nav-list">
+                  <li class="content-group-nav-item active"><a href="#{{state.slug}}-preview" class="content-group-nav-link component-preview-nav-link">Preview</a></li><li class="content-group-nav-item"><a href="#{{state.slug}}-code-example" class="content-group-nav-link component-preview-nav-link">Code</a></li>
+                </ul>
+              </nav>
+
+
+              <div class="component-state-content component-preview-content">
+                <div class="content-group-item active" id="{{state.slug}}-preview">
+                  <div class="preview-breakpoints">
+                    <div class="preview">
+                      {{#each state.content as |c| }}
+                        <iframe class="preview-state-variant auto-height component-{{state.slug}}-state-frame" id="{{state.slug}}-iframe" src="{{ rellink c.path }}" width="100%" height="0px"></iframe>
+                      {{/each}}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="code content-group-item" id="{{state.slug}}-code-example">
+                  <pre class="preview-state-variant-code">{{#each state.content as |c| }}<code class="language-html">{{c.content}}</code>{{/each}}</pre>
+                </div>
+
+                <ul class="dropdown">
+                  <li class="dropdown-item preview-breakpoints-item">
+                    <button class="preview-breakpoints-button dropdown-link ion-iphone" data-width="320" title="mobile">mobile</button>
+                  </li>
+                  <li class="dropdown-item preview-breakpoints-item">
+                    <button class="preview-breakpoints-button dropdown-link ion-iphone phablet" data-width="560" title="phablet">phablet</button>
+                  </li>
+                  <li class="dropdown-item preview-breakpoints-item">
+                    <button class="preview-breakpoints-button dropdown-link ion-ipad" data-width="768" title="tablet">tablet</button>
+                  </li>
+                  <li class="dropdown-item preview-breakpoints-item">
+                    <button class="preview-breakpoints-button dropdown-link ion-android-laptop" data-width="1280" title="desktop">desktop</button>
+                  </li>
+                  <li class="dropdown-item preview-breakpoints-item">
+                    <button class="preview-breakpoints-button dropdown-link ion-android-desktop" data-width="1800" title="hd">hd</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        {{/each}}
+
+      {{/unless}}
+    </div>
+
+    <footer class="component-footer">
+      <ul class="dropdown">
+        <li class="dropdown-item preview-breakpoints-item">
+          <button class="preview-breakpoints-button dropdown-link ion-iphone" data-width="320" title="mobile">mobile</button>
+        </li>
+        <li class="dropdown-item preview-breakpoints-item">
+          <button class="preview-breakpoints-button dropdown-link ion-iphone phablet" data-width="560" title="phablet">phablet</button>
+        </li>
+        <li class="dropdown-item preview-breakpoints-item">
+          <button class="preview-breakpoints-button dropdown-link ion-ipad" data-width="768" title="tablet">tablet</button>
+        </li>
+        <li class="dropdown-item preview-breakpoints-item">
+          <button class="preview-breakpoints-button dropdown-link ion-android-laptop" data-width="1280" title="desktop">desktop</button>
+        </li>
+        <li class="dropdown-item preview-breakpoints-item">
+          <button class="preview-breakpoints-button dropdown-link ion-android-desktop" data-width="1800" title="hd">hd</button>
+        </li>
+      </ul>
+    </footer>
+  </article>

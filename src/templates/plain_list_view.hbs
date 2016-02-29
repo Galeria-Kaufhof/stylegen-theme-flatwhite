@@ -1,0 +1,34 @@
+<div class="components-page page">
+  <header class="components-page-header page-header">
+    <h1 class="page-label">{{label}}</h1>
+  </header>
+
+  <div class="components-page-meta">
+    {{! component preflight }}
+    <div  class="components-page-preflight test-stylegen-preflight markdown-container">
+      {{#if preflight}}
+        {{{preflight}}}
+      {{/if}}
+    </div>
+
+    {{! component list anchor navigation }}
+    {{#if components.1.compiled }}
+      <nav class="anchor-menu components-page-anchor-menu">
+        <ul class="anchor-menu-list">
+          {{#each components as |c|}}
+            {{#with c.component as |component|}}
+              <li class="anchor-menu-item">
+                <a href="#component-{{component.slug}}" class="anchor-menu-link">{{ component.config.label }}</a>
+              </li>
+            {{/with}}
+          {{/each}}
+        </ul>
+      </nav>
+    {{/if}}
+  </div>
+
+  {{! component list }}
+  {{#each components}}
+    {{{compiled}}}
+  {{/each}}
+</div>

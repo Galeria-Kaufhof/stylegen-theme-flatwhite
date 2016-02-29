@@ -1,0 +1,31 @@
+.component-preview-nav
+  page-padding()
+
+
+.content-group-nav-link.component-preview-nav-link
+  position relative
+  border-bottom none
+
+  margin-bottom -1px
+
+  &:after
+    content ""
+    display block
+    position absolute
+    bottom 0
+    left 0
+    width 100%
+    z-index 100
+
+    border-bottom 1px solid content-group-bdc
+    .content-group-nav-item.active &
+      border-bottom 1px solid main-contrast-bg
+
+
+.component-preview-content
+  border-top 1px solid content-group-bdc
+  background-color main-contrast-bg
+  padding-top 2rem
+  padding-bottom 2rem
+
+  page-padding()

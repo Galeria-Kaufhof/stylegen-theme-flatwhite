@@ -1,0 +1,39 @@
+.main-nav-link
+  border-bottom 1px solid main-nav-bdc
+  display block
+  padding 1rem  1rem
+
+
+.main-nav > .main-nav-list > .main-nav-item > .main-nav-link
+  background-color main-nav-contrast-bg
+
+  border-color main-nav-contrast-bdc
+  color main-nav-contrast-c
+  padding-top 2rem
+  padding-bottom 1rem
+  font-weight 900
+
+  position relative
+  padding-right 2.5rem
+
+  &.has-children
+    // box-shadow: 0px 2px 28px -12px rgba(0,0,0,0.75);
+    border-color rgb(87, 87, 87)
+
+  &:hover
+    color main-nav-contrast-hover-c
+
+  &:after
+    font-family 'Ionicons'
+    content '\f126'
+
+    position absolute
+    right 1rem
+    top 50%
+    transform translate(-50%)
+
+    font-size .875rem
+
+
+.main-nav-children > .main-nav-item > .main-nav-link
+  font-weight 300

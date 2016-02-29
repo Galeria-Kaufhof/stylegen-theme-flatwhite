@@ -1,0 +1,25 @@
+.content-group-nav-link
+  display block
+  background-color content-group-link-bg
+  color content-group-link-c
+  font-weight 400
+  text-transform capitalize
+
+  padding .5rem 1rem
+  border 1px solid content-group-bdc
+
+  // TODO: DEFAULT MQ BEHAVIOR --------------------------
+  // border-bottom none
+  // .content-group-nav-item:last-of-type &
+  //   border-bottom 1px solid content-group-bdc
+
+  // TODO: ONLY IN LARGER MEDIA QUERIES ----------------------
+  border-right none
+  display inline-block
+
+  .content-group-nav-item:last-of-type &
+    border-right 1px solid content-group-bdc
+
+  .content-group-nav-item.active &, .content-group-nav-item:hover &
+    font-weight 600
+    color content-group-link-active-c

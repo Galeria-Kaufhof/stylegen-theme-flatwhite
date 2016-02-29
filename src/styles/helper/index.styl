@@ -1,0 +1,20 @@
+@require 'spacing-helper'
+@require 'typography-helper'
+@require 'mq-helper'
+
+invisible-text-button()
+  font-size 0
+
+  &:before
+    font-size 1rem
+    visibility visible
+
+
+v-aligned()
+  position relative
+  top 50%
+  transform translateY(-50%)
+
+encapsulated()
+  position relative
+  overflow hidden
