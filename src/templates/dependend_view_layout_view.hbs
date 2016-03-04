@@ -40,7 +40,7 @@
   (function(){
     "use strict";
 
-    var frameHeight = 0, elements, i, element, isVisible;
+    var elements, i, element, isVisible;
     // element.getBoundingClientRect().top
     // visible => element.ownerDocument
 
@@ -75,7 +75,7 @@
     };
 
     var checkFrameHeight = function() {
-      var elements = document.body.getElementsByTagName('*'), i, element, isVisible, dimensions, computedStyle, bottomMargin;
+      var elements = document.body.getElementsByTagName('*'), frameHeight = 0, i, element, isVisible, dimensions, computedStyle, bottomMargin;
 
       for (i = elements.length; i--;) {
         element = elements[i];
@@ -94,7 +94,7 @@
 
       document.body.setAttribute('data-frame-height', frameHeight);
 
-      setTimeout(checkFrameHeight, 500);
+      setTimeout(checkFrameHeight, 200);
     };
 
     checkFrameHeight();
