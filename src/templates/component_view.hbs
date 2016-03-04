@@ -46,7 +46,7 @@
             </div>
           </div>
 
-          <div class="code content-group-item" id="{{component.slug}}-code-example">
+          <div class="component-preview-code code content-group-item" id="{{component.slug}}-code-example">
             <pre><code class="language-html">{{template.content}}</code></pre>
           </div>
         </div>
@@ -76,19 +76,13 @@
               </nav>
 
 
-              <div class="component-state-content component-preview-content">
-                <div class="content-group-item active" id="{{state.slug}}-preview">
-                  <div class="preview-breakpoints">
-                    <div class="preview">
-                      {{#each state.content as |c| }}
-                        <iframe class="preview-state-variant auto-height component-{{state.slug}}-state-frame" id="{{state.slug}}-iframe" src="{{ rellink c.path }}" width="100%" height="0px"></iframe>
-                      {{/each}}
-                    </div>
+              <div class="component-state-content component-preview-content content-group-item active" id="{{state.slug}}-preview">
+                <div class="preview-breakpoints">
+                  <div class="preview">
+                    {{#each state.content as |c| }}
+                      <iframe class="preview-state-variant auto-height component-{{state.slug}}-state-frame" id="{{state.slug}}-iframe" src="{{ rellink c.path }}" width="100%" height="0px"></iframe>
+                    {{/each}}
                   </div>
-                </div>
-
-                <div class="code content-group-item" id="{{state.slug}}-code-example">
-                  <pre class="preview-state-variant-code">{{#each state.content as |c| }}<code class="language-html">{{c.content}}</code>{{/each}}</pre>
                 </div>
 
                 <ul class="dropdown">
@@ -109,7 +103,13 @@
                   </li>
                 </ul>
               </div>
+
+              <div class="component-preview-code code content-group-item" id="{{state.slug}}-code-example">
+                <pre class="preview-state-variant-code">{{#each state.content as |c| }}<code class="language-html">{{c.content}}</code>{{/each}}</pre>
+              </div>
+
             </div>
+
           </section>
         {{/each}}
 
