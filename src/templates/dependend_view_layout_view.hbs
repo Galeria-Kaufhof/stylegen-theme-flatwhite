@@ -75,7 +75,9 @@
     };
 
     var checkFrameHeight = function() {
-      var elements = document.body.getElementsByTagName('*'), frameHeight = 0, i, element, isVisible, dimensions, computedStyle, bottomMargin;
+      var elements = document.body.getElementsByTagName('*')
+        , frameHeight = 0
+        , i, element, isVisible, dimensions, computedStyle, bottomMargin, shadow, shadowHeight = 0, shadowBlur = 0, rgbaMatch, colorMatch, insetMatch;
 
       for (i = elements.length; i--;) {
         element = elements[i];
@@ -88,7 +90,24 @@
             dimensions = element.getBoundingClientRect();
             computedStyle = element.currentStyle || window.getComputedStyle(element);
             bottomMargin = pxAsDecimal(computedStyle.marginBottom);
-            frameHeight = Math.max(frameHeight, dimensions.top + dimensions.height + bottomMargin);
+
+            shadow = computedStyle.boxShadow;
+
+            // TODO: check for browser compatibility
+            if (shadow !== 'none') {
+              rgbaMatch = shadow.match(/^rgb[a]?\(.+?\)(.*?)$/)
+
+              shadow = rgbaMatch && rgbaMatch[1] ? rgbaMatch[1] : shadow;
+
+              insetMatch = shadow.match(/^(.*?) inset$/)
+              shadow = insetMatch && insetMatch[1] ? insetMatch[1] : shadow;
+
+              shadow = shadow.split(' ');
+              shadowHeight = !!shadow[1] ? parseInt(shadow[1].substr(0, shadow[1].indexOf('px'))) : 0;
+              shadowBlur = !!shadow[3] ? parseInt(shadow[3].substr(0, shadow[3].indexOf('px'))) : 0;
+            }
+
+            frameHeight = Math.max(frameHeight, dimensions.top + dimensions.height + bottomMargin + shadowHeight + shadowBlur);
         }
       }
 
