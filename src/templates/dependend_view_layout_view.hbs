@@ -6,7 +6,7 @@
 
   <!-- TODO: make css deps more dynamic, maybe allow tag reference here -->
   {{#each cssDeps}}
-    <link rel="stylesheet" href="{{this}}">
+    <link rel="stylesheet" href="{{ rellink this }}">
   {{/each}}
 
   {{#if head}}
@@ -25,7 +25,7 @@
   {{{content}}}
 
   {{#each jsDeps}}
-    <script src="{{this}}"></script>
+    <script src="{{ rellink this }}"></script>
   {{/each}}
 
   {{#if bottom}}
