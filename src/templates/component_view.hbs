@@ -38,16 +38,16 @@
             </ul>
           </nav>
 
-          <div class="component-preview-content content-group-item active" id="{{state.slug}}-preview">
+          <div class="component-preview-content content-group-item active" id="{{component.slug}}-preview">
             <div class="preview-breakpoints">
-              <div class="preview" id="{{component.slug}}-preview">
+              <div class="preview">
                 <iframe src="{{ rellink template.path }}" class="auto-height component-{{component.slug}}-frame"  width="100%" height="0px"></iframe>
               </div>
             </div>
           </div>
 
           <div class="component-preview-code code content-group-item" id="{{component.slug}}-code-example">
-            <pre><code class="language-html">{{template.content}}</code></pre>
+            <pre><code class="language-html">{{beautified template.content}}</code></pre>
           </div>
         </div>
 
@@ -105,7 +105,7 @@
               </div>
 
               <div class="component-preview-code code content-group-item" id="{{state.slug}}-code-example">
-                <pre class="preview-state-variant-code">{{#each state.content as |c| }}<code class="language-html">{{c.content}}</code>{{/each}}</pre>
+                <pre class="preview-state-variant-code">{{#each state.content as |c| }}<code class="language-html">{{beautified c.content}}</code>{{/each}}</pre>
               </div>
 
             </div>

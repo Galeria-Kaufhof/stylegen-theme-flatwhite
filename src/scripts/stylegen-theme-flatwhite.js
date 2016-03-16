@@ -78,6 +78,8 @@
     offCanvasNav.toggleNav();
   });
 
+
+  delete Hammer.defaults.cssProps.userSelect;
   var touchContent = new Hammer.Manager(ocContent);
   var touchNav = new Hammer.Manager(ocNav);
 
@@ -126,7 +128,7 @@
     alreadyActive = linkItem.hasClass('active') ? true : false;
 
     links.removeClass('active');
-    iframe.css('margin-left', '0px');
+    preview.css('margin-left', '0px');
 
     linkItem.toggleClass('active');
 
@@ -141,7 +143,7 @@
       if (newWidth > parentWidth) {
         offset = ((newWidth - parentWidth) / 2 * -1);
 
-        iframe.css('margin-left', offset + 'px');
+        preview.css('margin-left', offset + 'px');
       };
     } else {
       preview.css("width", "100%");
