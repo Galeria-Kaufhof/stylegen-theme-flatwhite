@@ -1,6 +1,6 @@
 {
   "name": "stylegen-theme-flatwhite",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "a basic (flat and white) theme for stylegen",
   "main": "package.json",
   "scripts": {
