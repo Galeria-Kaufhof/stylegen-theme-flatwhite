@@ -77,38 +77,53 @@
     var checkFrameHeight = function() {
       var elements = document.body.getElementsByTagName('*')
         , frameHeight = 0
-        , i, element, isVisible, dimensions, computedStyle, bottomMargin, shadow, shadowHeight = 0, shadowBlur = 0, rgbaMatch, colorMatch, insetMatch;
+        , i, element, isVisible, dimensions, computedStyle
+        , bottomMargin, shadow, shadowHeight = 0, shadowBlur = 0
+        , rgbaMatch, colorMatch, insetMatch, bodyStyle, headStyle, bodyBottomPadding = 0, htmlHeight = 0;
 
-      for (i = elements.length; i--;) {
-        element = elements[i];
-        isVisible = checks.isVisible(element);
+      try {
+        headStyle = document.documentElement.currentStyle || window.getComputedStyle(document.documentElement);
+        htmlHeight = headStyle.getPropertyValue("height")
+        htmlHeight = htmlHeight ? parseInt(htmlHeight.substr(0, htmlHeight.indexOf('px'))) : 0
+        bodyStyle = document.body.currentStyle || window.getComputedStyle(document.body);
+        bodyBottomPadding = bodyStyle.paddingBottom ? parseInt(bodyStyle.paddingBottom.substr(0, bodyStyle.paddingBottom.indexOf('px'))) : 0
 
-        switch(true) {
-          case (isVisible && checks.isIgnoredTag(element)):
-            break;
-          default:
-            dimensions = element.getBoundingClientRect();
-            computedStyle = element.currentStyle || window.getComputedStyle(element);
-            bottomMargin = pxAsDecimal(computedStyle.marginBottom);
 
-            shadow = computedStyle.boxShadow;
+        for (i = elements.length; i--;) {
+          element = elements[i];
+          isVisible = checks.isVisible(element);
 
-            // TODO: check for browser compatibility
-            if (shadow !== 'none') {
-              rgbaMatch = shadow.match(/^rgb[a]?\(.+?\)(.*?)$/)
+          switch(true) {
+            case (isVisible && checks.isIgnoredTag(element)):
+              break;
+            default:
+              dimensions = element.getBoundingClientRect();
+              computedStyle = element.currentStyle || window.getComputedStyle(element);
+              bottomMargin = pxAsDecimal(computedStyle.marginBottom);
 
-              shadow = rgbaMatch && rgbaMatch[1] ? rgbaMatch[1] : shadow;
+              shadow = computedStyle.boxShadow;
 
-              insetMatch = shadow.match(/^(.*?) inset$/)
-              shadow = insetMatch && insetMatch[1] ? insetMatch[1] : shadow;
+              // TODO: check for browser compatibility
+              if (shadow !== 'none') {
+                rgbaMatch = shadow.match(/^rgb[a]?\(.+?\)(.*?)$/)
 
-              shadow = shadow.split(' ');
-              shadowHeight = !!shadow[1] ? parseInt(shadow[1].substr(0, shadow[1].indexOf('px'))) : 0;
-              shadowBlur = !!shadow[3] ? parseInt(shadow[3].substr(0, shadow[3].indexOf('px'))) : 0;
-            }
+                shadow = rgbaMatch && rgbaMatch[1] ? rgbaMatch[1] : shadow;
 
-            frameHeight = Math.max(frameHeight, dimensions.top + dimensions.height + bottomMargin + shadowHeight + shadowBlur);
+                insetMatch = shadow.match(/^(.*?) inset$/)
+                shadow = insetMatch && insetMatch[1] ? insetMatch[1] : shadow;
+
+                shadow = shadow.split(' ');
+                shadowHeight = !!shadow[1] ? parseInt(shadow[1].substr(0, shadow[1].indexOf('px'))) : 0;
+                shadowBlur = !!shadow[3] ? parseInt(shadow[3].substr(0, shadow[3].indexOf('px'))) : 0;
+              }
+
+              frameHeight = Math.max(frameHeight, dimensions.top + dimensions.height + bottomMargin + shadowHeight + shadowBlur + bodyBottomPadding);
+              frameHeight = Math.max(frameHeight, htmlHeight);
+          }
         }
+
+      } catch(e) {
+      // maybe not visible at the moment
       }
 
       document.body.setAttribute('data-frame-height', frameHeight);
