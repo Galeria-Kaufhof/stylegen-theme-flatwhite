@@ -20,10 +20,10 @@
   <nav class="off-canvas-nav main-nav test-stylegen-main-nav">
     {{#*inline "sg.main-link-item"}}
       <li class="main-nav-item list-item">
-        <a class="main-nav-link link {{#if children}}has-children{{/if}}" href="{{ rellink link }}">{{label}}</a>
-        {{#if children}}
+        <a class="main-nav-link link {{#if (eq (rellink currentPage.link) (rellink page.link))}}active{{/if}} {{#if page.children}}has-children{{/if}}" href="{{ rellink page.link }}">{{label}}</a>
+        {{#if page.children}}
           <ul class="main-nav-children test-stylegen-children">
-            {{> sg.main-link-list children}}
+            {{> sg.main-link-list pages=page.children}}
           </ul>
         {{/if}}
       </li>
@@ -31,12 +31,12 @@
 
     <ul class="main-nav-list list">
       {{#*inline "sg.main-link-list"}}
-        {{#each this}}
-          {{> sg.main-link-item}}
+        {{#each pages}}
+          {{> sg.main-link-item page=this currentPage=../currentPage}}
         {{/each}}
       {{/inline}}
 
-      {{> sg.main-link-list pages }}
+      {{> sg.main-link-list pages=pages currentPage=page }}
     </ul>
   </nav>
 
