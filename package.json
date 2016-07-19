@@ -2,7 +2,7 @@
   "name": "stylegen-theme-flatwhite",
   "version": "0.0.8",
   "description": "a basic (flat and white) theme for stylegen",
-  "main": "package.json",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublish": "node_modules/.bin/gulp build"
