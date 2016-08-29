@@ -230,4 +230,46 @@
   $.each($('.preview > iframe'), function(i, iframe) {
     new IFrameHeightObserver(iframe, i).check();
   });
+
+  // **********************************************************
+  // dropdown-switch
+  // **********************************************************
+
+  $('.dropdown-switch-menu-button').on('click', function(e) {
+    e.preventDefault();
+    var content = $(e.currentTarget.parentNode).find('.dropdown-switch-content');
+    var state = $(e.currentTarget).find('.state-indicator');
+    content.toggleClass('dropdown-switch-content--open');
+    state.toggleClass('ion-chevron-up ion-chevron-down');
+  });
+
+  $('.dropdown-switch-content-item').on('click', function(e) {
+    e.preventDefault();
+    $(e.target).closest('.dropdown-switch-content')
+      .find('.dropdown-switch-content-item')
+      .removeClass('dropdown-switch-content-item--active');
+    $(e.target).addClass('dropdown-switch-content-item--active');
+  });
+
+  // **********************************************************
+  // tenant switch
+  // **********************************************************
+  var mapTenantNameToId = function(name) {
+    var tenants = {
+      "galeria-kaufhof.de": "0001",
+      "inno.be": "0002"};
+    return tenants[name] || console.error('mapTenantNameToId: Tenant '+name+' not found');
+  };
+
+  $('.tenant-item').on('click', function(e) {
+    var tenantName, link, path;
+    e.preventDefault();
+    tenantName = $(e.target).data('tenant-name');
+    $.each($('iframe').contents().find('head'), function(i, head) {
+      link = $(head).find('link').last();
+      path = link.attr('href').split('/');
+      path.pop();
+      link.attr('href', path.join('/') + "/tenant-" + mapTenantNameToId(tenantName) + ".css");
+    });
+  });
 }(window && window.jQuery))
