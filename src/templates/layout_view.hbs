@@ -15,39 +15,25 @@
     <button class="nav-toggle nav-bar-menu-toggle ion-navicon" data-target=".nav-main">Open Menu</button>
 
     <h1 class="headline-prio-1 nav-bar-title">{{projectName}}</h1>
-
-    <div class="dropdown-switch">
-      <ul class="dropdown-switch-menu">
-        <li class="dropdown-switch-item">
-          <button class="dropdown-switch-menu-button">
-            Theme
-            <span class="state-indicator ion-chevron-down"></span>
-          </button>
-          <ul class="dropdown-switch-content tenant-switch">
-            <li class="dropdown-switch-content-item dropdown-switch-content-item--active tenant-item" data-tenant-name="galeria-kaufhof.de">
-              galeria-kaufhof.de
-            </li>
-            <li class="dropdown-switch-content-item tenant-item" data-tenant-name="inno.be">
-              inno.be
-            </li>
-          </ul>
-        </li>
-        <li class="dropdown-switch-item">
-          <button class="dropdown-switch-menu-button">
-            Theme
-            <span class="state-indicator ion-chevron-down"></span>
-          </button>
-          <ul class="dropdown-switch-content tenant-switch">
-            <li class="dropdown-switch-content-item dropdown-switch-content-item--active tenant-item" data-tenant-name="galeria-kaufhof.de">
-              galeria-kaufhof.de
-            </li>
-            <li class="dropdown-switch-content-item tenant-item" data-tenant-name="inno.be">
-              inno.be
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+    {{#if themes}}
+      <div class="dropdown-switch">
+        <ul class="dropdown-switch-menu">
+          <li class="dropdown-switch-item">
+            <button class="dropdown-switch-menu-button">
+              Theme
+              <span class="state-indicator ion-chevron-down"></span>
+            </button>
+            <ul class="dropdown-switch-content tenant-switch">
+              {{#each themes}}
+                <li class="dropdown-switch-content-item {{#if this.default}}dropdown-switch-content-item--active{{/if}} tenant-item" data-tenant-src="{{this.src}}">
+                {{this.name}}
+              </li>
+              {{/each}}
+            </ul>
+          </li>
+        </ul>
+      </div>
+    {{/if}}
   </header>
 
   <nav class="off-canvas-nav main-nav test-stylegen-main-nav">

@@ -254,22 +254,15 @@
   // **********************************************************
   // tenant switch
   // **********************************************************
-  var mapTenantNameToId = function(name) {
-    var tenants = {
-      "galeria-kaufhof.de": "0001",
-      "inno.be": "0002"};
-    return tenants[name] || console.error('mapTenantNameToId: Tenant '+name+' not found');
-  };
-
   $('.tenant-item').on('click', function(e) {
-    var tenantName, link, path;
+    var tenantSrc, link, path;
     e.preventDefault();
-    tenantName = $(e.target).data('tenant-name');
+    tenantSrc = $(e.target).data('tenant-src');
     $.each($('iframe').contents().find('head'), function(i, head) {
       link = $(head).find('link').last();
       path = link.attr('href').split('/');
       path.pop();
-      link.attr('href', path.join('/') + "/tenant-" + mapTenantNameToId(tenantName) + ".css");
+      link.attr('href', path.join('/') + "/" + tenantSrc + ".css");
     });
   });
 }(window && window.jQuery))
