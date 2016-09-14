@@ -255,14 +255,14 @@
   // tenant switch
   // **********************************************************
   $('.tenant-item').on('click', function(e) {
-    var tenantSrc, link, path;
+    var tenantSrc, link, parser;
     e.preventDefault();
     tenantSrc = $(e.target).data('tenant-src');
     $.each($('iframe').contents().find('head'), function(i, head) {
       link = $(head).find('link').last();
-      path = link.attr('href').split('/');
-      path.pop();
-      link.attr('href', path.join('/') + "/" + tenantSrc + ".css");
+      parser = document.createElement('a');
+      parser.href = link.attr('href');
+      link.attr('href', parser.protocol + '//' + parser.host + '/' + tenantSrc);
     });
   });
 }(window && window.jQuery))
