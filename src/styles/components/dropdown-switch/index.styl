@@ -1,53 +1,10 @@
+@require 'dropdown-switch-item'
+@require 'dropdown-switch-content'
+@require 'dropdown-switch-menu'
+
 .dropdown-switch
   position: absolute
   right: 0
   top: 0
   height: 100%
   margin-right: 1rem
-
-  &-item
-    position: relative
-    height: inherit
-    border-left: 1px solid main-nav-bdc
-    display: inline-block
-    &:last-child
-      border-right: 1px solid main-nav-bdc
-
-  &-menu
-    color: main-text-c
-    height: 100%
-    &-button
-      v-aligned()
-      margin: 0 1rem
-
-  &-content
-    position: absolute
-    right: -1px
-    top: 61px
-    height: auto
-    background-color: main-nav-bg
-    transform: scaleY(0)
-    transform-origin: top
-    transition: transform .5s ease
-    margin-right: 0
-    padding: .5rem 0
-    border: 1px solid main-nav-bdc
-    border-top: none;
-    white-space: nowrap
-
-    &-item
-      padding: .5rem 1rem .5rem 1rem
-      margin-bottom: .5rem
-      border-bottom: 1px solid main-nav-contrast-bdc
-      cursor: pointer
-      font-weight: 300
-
-      &--active
-        font-weight: 600
-
-      &:last-child
-        border-bottom: 0
-        margin-bottom: 0
-
-    &--open
-      transform: scaleY(1)

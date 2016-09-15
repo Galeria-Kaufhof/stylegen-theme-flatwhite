@@ -1,0 +1,31 @@
+.dropdown-switch-content
+  position: absolute
+  right: -1px
+  top: 61px
+  height: auto
+  background-color: main-nav-bg
+  transform: scaleY(0)
+  transform-origin: top
+  transition: transform .5s ease
+  margin-right: 0
+  padding: .5rem 0
+  border: 1px solid main-nav-bdc
+  border-top: none;
+  white-space: nowrap
+
+  &-item
+    padding: .5rem 1rem .5rem 1rem
+    margin-bottom: .5rem
+    border-bottom: 1px solid main-nav-contrast-bdc
+    cursor: pointer
+    font-weight: 300
+
+    &--active
+      font-weight: 600
+
+    &:last-child
+      border-bottom: 0
+      margin-bottom: 0
+
+  &--open
+    transform: scaleY(1)
