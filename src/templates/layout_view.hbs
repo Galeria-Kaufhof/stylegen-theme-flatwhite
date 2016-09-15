@@ -23,9 +23,9 @@
               Theme
               <span class="state-indicator ion-chevron-down"></span>
             </button>
-            <ul class="dropdown-switch-content tenant-switch">
+            <ul class="dropdown-switch-content themes-switch">
               {{#each themes}}
-                <li class="dropdown-switch-content-item {{#if this.default}}dropdown-switch-content-item--active{{/if}} tenant-item" data-tenant-src="{{this.src}}">
+                <li class="dropdown-switch-content-item {{#if this.default}}dropdown-switch-content-item--active{{/if}} themes-item" data-tenant-src="{{this.src}}">
                 {{this.name}}
               </li>
               {{/each}}

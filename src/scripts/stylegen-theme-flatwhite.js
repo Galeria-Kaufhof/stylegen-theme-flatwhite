@@ -254,7 +254,7 @@
   // **********************************************************
   // tenant switch
   // **********************************************************
-  $('.tenant-item').on('click', function(e) {
+  $('.themes-item').on('click', function(e) {
     var tenantSrc, link, parser;
     e.preventDefault();
     tenantSrc = $(e.target).data('tenant-src');
