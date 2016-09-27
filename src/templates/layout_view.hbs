@@ -15,6 +15,25 @@
     <button class="nav-toggle nav-bar-menu-toggle ion-navicon" data-target=".nav-main">Open Menu</button>
 
     <h1 class="headline-prio-1 nav-bar-title">{{projectName}}</h1>
+    {{#if themes}}
+      <div class="dropdown-switch">
+        <ul class="dropdown-switch-menu">
+          <li class="dropdown-switch-item">
+            <button class="dropdown-switch-menu-button">
+              Theme
+              <span class="state-indicator ion-chevron-down"></span>
+            </button>
+            <ul class="dropdown-switch-content themes-switch">
+              {{#each themes}}
+                <li class="dropdown-switch-content-item {{#if this.default}}dropdown-switch-content-item--active{{/if}} themes-item" data-tenant-src="{{this.src}}">
+                {{this.name}}
+              </li>
+              {{/each}}
+            </ul>
+          </li>
+        </ul>
+      </div>
+    {{/if}}
   </header>
 
   <nav class="off-canvas-nav main-nav test-stylegen-main-nav">
