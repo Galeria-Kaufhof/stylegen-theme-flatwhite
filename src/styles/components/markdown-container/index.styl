@@ -22,6 +22,12 @@
     headline-primary()
     margin-bottom 1rem
 
+  a
+  a:visited
+      color: #0066aa
+  a:hover
+    text-decoration: underline
+    color: #0099cc
   p
     font-size 1rem
     line-height 1.33
@@ -33,15 +39,32 @@
   p code
     background: white;
     padding: .5em;
-    color: #07a;
-    font-size: 0.9rem
+    color: #990000;
+    font-size: 1rem
+    border-radius: 4px
+    background: #eee
+
+  pre
+    border-radius: 4px
+    font-size: 1rem
+    background: #eee
 
   ul
-    list-style square
+    list-style-type square
     li
-      list-style square
+      display list-item
+      margin 0.5rem 0.5rem 0.5rem 1.5rem
 
   table
     width 100%
-    padding 0.5rem
-    background #f0f0f0
+    padding 0.25rem
+    background #eee
+    border-radius: 4px
+
+    th
+      text-align left
+      padding 0.5rem 0
+
+    td
+      padding 0.5rem
+      background #fff
