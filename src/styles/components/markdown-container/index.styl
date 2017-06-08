@@ -1,15 +1,31 @@
 .markdown-container
   h1, h2, h3, h4, h5, h6
+    margin-top 3rem
     margin-bottom .5rem
+    font-weight 500
 
+  h1
+    font-size 2.25rem
+  h2
+    font-size 1.75rem
+
+  h3
+    font-size 1.5rem
+
+  h4
+    font-size 1.25rem
+
+  h5, h6
+    font-size 1rem
+    font-weight bold
   h1
     headline-primary()
     margin-bottom 1rem
 
   p
-    font-size 0.9375rem
+    font-size 1rem
     line-height 1.33
-    margin-bottom 1rem
+    margin-bottom 2rem
 
   p + h1, p + h2, p + h3, p + h4, p + h5, p + h6
     margin-top 1.5rem
@@ -18,3 +34,14 @@
     background: white;
     padding: .5em;
     color: #07a;
+    font-size: 0.9rem
+
+  ul
+    list-style square
+    li
+      list-style square
+
+  table
+    width 100%
+    padding 0.5rem
+    background #f0f0f0
